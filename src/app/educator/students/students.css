@@ -1,0 +1,186 @@
+:root {
+  --primary-green: #2D9966;
+  --primary-blue: #3b82f6;
+  --text-dark: #1f2937;
+  --text-muted: #6b7280;
+  --bg-light: #f9fafb;
+  --border-light: #e5e7eb;
+}
+
+/* Header */
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+.startheader {
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-primary);
+  font-weight: 700;
+}
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 500;
+}
+.user-avatar {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* --- Page Header & Actions --- */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.5rem;
+}
+.header-text h2 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem 0;
+}
+.header-text p { color: var(--text-muted); margin: 0; }
+.header-actions { display: flex; gap: 0.75rem; }
+.btn {
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: .90rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+.btn-export { background-color: white; border-color: var(--border-light); color: var(--text-dark); }
+.btn-invite { background-color: var(--primary-green); color: white; }
+
+/* --- Stats Grid --- */
+.stats-grid-students {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: .70rem;
+    margin: 1.2rem 0;
+}
+.stat-card-students {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.stat-icon-students {
+  width: 40px; height: 40px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: white; flex-shrink: 0;
+}
+.stat-icon-students.blue { background-color: #e0f2fe; color: #0284c7; }
+.stat-icon-students.green { background-color: #dcfce7; color: #16a34a; }
+.stat-icon-students.yellow { background-color: #fef9c3; color: #ca8a04; }
+.stat-icon-students.cyan { background-color: #cffafe; color: #0891b2; }
+
+.stat-info-students .stat-number { font-size: 1.3rem; font-weight: 600; display: inline-block; margin-right: 0.5rem;}
+.stat-info-students .stat-label { color: var(--text-muted); font-size: 0.875rem; }
+
+/* --- Student List Card --- */
+.student-list-card {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.student-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+.student-list-header h3 { font-size: 1.5rem; font-weight: 600; margin: 0; }
+.student-list-filters { display: flex; gap: 1rem; }
+.student-search-wrapper { position: relative; }
+.student-search-wrapper input { padding: 0.5rem 0.75rem 0.5rem 2.25rem; border-radius: 6px; border: 1px solid var(--border-light); }
+.student-search-wrapper svg { position: absolute; left: 0.75rem; top: 50%; transform: translateY(-50%); color: var(--text-muted); }
+.student-filter-dropdown { padding: 0.5rem 0.75rem; border-radius: 6px; border: 1px solid var(--border-light); background: white; }
+
+/* --- Student Table --- */
+.student-table { font-size: 0.875rem; }
+.table-header, .table-row {
+  display: grid;
+  grid-template-columns: 2fr 2fr 1.5fr 1fr 1.5fr 1fr;
+  gap: 1.5rem;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border-light);
+}
+.table-header { font-weight: 600; color: var(--text-muted); text-transform: uppercase; font-size: 0.75rem; }
+.table-row:last-child { border-bottom: none; }
+
+.student-name { display: block; font-weight: 500; color: var(--text-dark); }
+.student-email { display: block; color: var(--text-muted); }
+.course-badge { padding: 0.25rem 0.75rem; border-radius: 99px; font-size: 0.75rem; font-weight: 500; }
+.course-badge.blue { background-color: #dbeafe; color: #2563eb; }
+.course-badge.yellow { background-color: #fef9c3; color: #a16207; }
+.course-badge.green { background-color: #dcfce7; color: #16a34a; }
+.course-badge.teal { background-color: #ccfbf1; color: #0d9488; }
+
+.progress-bar-container { width: 100%; height: 6px; background-color: #e5e7eb; border-radius: 99px; overflow: hidden; margin-bottom: 0.25rem;}
+.progress-bar-fill { height: 100%; border-radius: 99px; }
+.progress-bar-fill.green { background-color: #22c55e; }
+.progress-bar-fill.yellow { background-color: #f59e0b; }
+.progress-bar-fill.teal { background-color: #14b8a6; }
+.progress-bar-fill.red { background-color: #ef4444; }
+
+.progress-text { font-size: 0.8rem; color: var(--text-muted); }
+.perf-badge { display: block; padding: 0.2rem 0.6rem; border-radius: 6px; font-weight: 500; text-align: center; margin-bottom: 0.25rem; font-size: 0.75rem;}
+.perf-badge.excellent { background-color: #dcfce7; color: #16a34a; }
+.perf-badge.good { background-color: #fef9c3; color: #a16207; }
+.perf-badge.needs-help { background-color: #fee2e2; color: #b91c1c; }
+.perf-score { font-size: 0.8rem; color: var(--text-muted); text-align: center; }
+.action-buttons { display: flex; gap: 0.5rem; }
+.action-buttons button { padding: 0.5rem; border-radius: 6px; border: 1px solid var(--border-light); background: white; cursor: pointer; color: var(--text-muted); }
+.action-buttons button:hover { background-color: var(--bg-light); color: var(--text-dark); }
+
+.table-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-light);
+  font-size: 0.875rem; color: var(--text-muted);
+}
+
+.placeholder-row {
+  display: flex;
+}
+
+.placeholder-cell {
+  flex: 1;
+  text-align: center;
+  padding: 3rem 1rem;
+  color: #718096;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.progress-bar-container {
+  background-color: #e5e7eb;
+  height: 8px;
+  border-radius: 8px;
+  width: 100%;
+}
+
+.progress-bar-fill.green { background-color: #34d399; }
+.progress-bar-fill.yellow { background-color: #f59e0b; }
+.progress-bar-fill.teal { background-color: #22d3ee; }
+.progress-bar-fill.red { background-color: #f87171; }
+

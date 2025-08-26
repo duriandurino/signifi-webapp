@@ -1,0 +1,146 @@
+/* --- Analytics Page Layout Grid --- */
+.analytics-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* Two-thirds for the chart, one-third for the list */
+  gap: 2rem;
+  margin-top: 2rem;
+  align-items: start; /* Aligns items to the top of the grid row */
+}
+
+/* --- Base Style for Both Cards --- */
+.analytics-card {
+  background-color: white;
+  padding: 1.5rem 2rem;
+  border-radius: 16px; 
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+  border: 1px solid var(--border-color); 
+}
+
+.analytics-card .card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+.analytics-card .card-header h4 {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.chart-card {
+  height: 400px; 
+  width: 800px;
+  display: flex;
+  flex-direction: column;
+}
+
+.toggle-buttons {
+  display: flex;
+  background-color: #f3f4f6; 
+  border-radius: 8px;
+  padding: 4px;
+}
+.toggle-btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  background-color: transparent;
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: all 0.2s ease-in-out;
+}
+.toggle-btn.active {
+  background-color: white;
+  color: var(--primary-blue);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.chart-container {
+  flex-grow: 1; 
+  min-height: 0;
+}
+
+.top-courses-card {
+  /* This card can have a natural height based on its content */
+}
+
+.courses-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* Space between each course item */
+}
+.course-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+.course-item:hover {
+  border-color: #d1d5db;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.course-info h5 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 0.25rem 0;
+}
+.course-info span {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.course-stats {
+  text-align: right;
+  flex-shrink: 0; /* Prevents this section from shrinking */
+  padding-left: 1rem; /* Adds space so text doesn't touch */
+}
+.course-revenue {
+  display: block;
+  font-weight: 600;
+  color: #16a34a; /* A vibrant green for earnings */
+  margin-bottom: 0.25rem;
+  font-size: 0.95rem;
+}
+.course-revenue small {
+  display: block;
+  font-weight: 400;
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+}
+
+.course-rating {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.25rem;
+  font-weight: 500;
+}
+.course-rating .filled {
+  color: #f59e0b; /* A golden yellow for the star */
+}
+
+/* --- Responsive Adjustments for smaller screens --- */
+@media (max-width: 1200px) {
+  .analytics-grid {
+    grid-template-columns: 1fr; /* Stack the cards on top of each other */
+  }
+}
+
+@media (max-width: 768px) {
+    .analytics-card .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+}

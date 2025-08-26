@@ -1,0 +1,135 @@
+/* --- EDUCATOR APPLICATIONS PAGE STYLES --- */
+
+/* Color Variables */
+:root {
+  --primary-blue: #3B82F6;
+  --secondary-gray: #6B7280;
+  --light-gray-border: #E5E7EB;
+  --light-gray-bg: #F9FAFB;
+  --text-dark: #1F2937;
+  --text-light: #4B5563;
+  --red-dark: #DC2626;
+  --yellow-bg: #FEF3C7;
+  --yellow-text: #B45309;
+  --green-bg: #D1FAE5;
+  --green-text: #059669;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  margin: 0;
+  background-color: var(--main-bg);
+  color: var(--text-dark);
+}
+
+.educator-applications-container .page-header {
+  margin-bottom: 2rem;
+}
+.educator-applications-container h1 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 0.5rem;
+}
+.educator-applications-container p {
+  font-size: 1rem;
+  color: var(--text-light);
+}
+
+.table-wrapper {
+  background-color: white;
+  border: 1px solid var(--light-gray-border);
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+  padding: 1.5rem;
+}
+
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+.table-header h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin: 0;
+}
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.header-controls .status-filter {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--light-gray-border);
+  border-radius: 6px;
+  font-size: 0.875rem;
+  color: var(--text-light);
+  appearance: none; /* Removes default select styling */
+  background-color: white;
+}
+.header-controls .status-filter:focus {
+  outline: none; /* Removes the focus outline */
+  border-color: var(--primary-blue); /* Highlight on focus */
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 0.875rem;
+  border: 1px solid transparent;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background-color 0.2s;
+}
+.btn-primary { background-color: var(--primary-blue); color: white; }
+.btn-primary:hover { background-color: #2563EB; }
+.btn-secondary { background-color: white; color: var(--text-dark); border-color: var(--light-gray-border); }
+.btn-secondary:hover { background-color: var(--light-gray-bg); }
+
+/* --- Table Styles --- */
+.table-scroll-wrapper {
+  overflow-x: auto; /* Enables horizontal scrolling */
+  width: 100%;
+}
+
+.applications-table { width: 100%; border-collapse: collapse; min-width: 700px; /* Minimum width to prevent squishing */ }
+.applications-table th, .applications-table td {
+  padding: 1rem 1.5rem;
+  text-align: left;
+  border-bottom: 1px solid var(--light-gray-border);
+  vertical-align: middle;
+  white-space: nowrap; /* Prevents text from wrapping */
+}
+.applications-table thead th {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--secondary-gray);
+  text-transform: uppercase;
+  background-color: var(--light-gray-bg);
+}
+.applications-table tbody tr:last-child td { border-bottom: none; }
+
+/* Status Pills */
+.pill {
+  padding: 0.25rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.status-pending { background-color: var(--yellow-bg); color: var(--yellow-text); }
+.status-approved { background-color: var(--green-bg); color: var(--green-text); }
+.status-rejected { background-color: var(--red-bg); color: white; }
+
+.empty-state {
+  text-align: center;
+  font-size: .9rem;
+  color: #888;
+  font-style: italic;
+}
