@@ -4,13 +4,43 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { Mail, Lock, Eye, EyeOff, ArrowRight, Video, Target, BarChart2, Chrome, Facebook } from 'lucide-react';
 import './login.css';
+import { apiFetch } from '@/lib/api';
+import { useRouter } from 'next/navigation';
+import { useAuth } from '@/contexts/AuthContext';
 
 const LoginPage = () => {
+  const router = useRouter();
+  const { login } = useAuth();
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
+
+  async function onSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setError(null);
+    setLoading(true);
+    try {
+      const resp = await apiFetch<{ token: string; user: any }>(
+        '/api/auth/login',
+        {
+          method: 'POST',
+          body: JSON.stringify({ email, password })
+        }
+      );
+      login(resp.token, resp.user);
+      router.replace('/educator/dashboard');
+    } catch (err: any) {
+      setError(err?.message || 'Login failed');
+    } finally {
+      setLoading(false);
+    }
+  }
 
   return (
     <div className="login-container">
@@ -60,12 +90,19 @@ const LoginPage = () => {
             <h2>Login to your Account</h2>
           </div>
 
-          <form className="login-form">
+          <form className="login-form" onSubmit={onSubmit}>
             <div className="form-group">
               <label htmlFor="email">Email Address</label>
               <div className="input-wrapper">
                 <Mail className="input-icon" size={20} />
-                <input type="email" id="email" placeholder="Enter your email" />
+                <input
+                  type="email"
+                  id="email"
+                  placeholder="Enter your email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
               </div>
             </div>
 
@@ -77,6 +114,9 @@ const LoginPage = () => {
                   type={passwordVisible ? 'text' : 'password'}
                   id="password"
                   placeholder="Enter your password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
                 />
                 <button type="button" onClick={togglePasswordVisibility} className="password-toggle">
                   {passwordVisible ? <EyeOff size={20} /> : <Eye size={20} />}
@@ -88,13 +128,17 @@ const LoginPage = () => {
               <a href="#" className="forgot-password">Forgot Password?</a>
             </div>
 
-            <button type="submit" className="btn btn-primary">
-              Sign In
+            {error && (
+              <div style={{ color: '#b00020', marginBottom: '8px' }}>{error}</div>
+            )}
+
+            <button type="submit" className="btn btn-primary" disabled={loading}>
+              {loading ? 'Signing in...' : 'Sign In'}
             </button>
           </form>
 
           <div className="signup-link">
-            <p>Don't have an account? <a href="#">Create Account</a></p>
+            <p>Don't have an account? <a href="/signup">Create Account</a></p>
           </div>
           
           <div className="terms">

@@ -1,9 +1,11 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { ChevronDown, PlusCircle, Upload } from "lucide-react";
 import './uploadcourse.css';
+import { apiFetch } from '@/lib/api';
+import { useRouter } from 'next/navigation';
 
 const placeholderModules = [
   { title: "Module 1: Introduction" },
@@ -11,6 +13,44 @@ const placeholderModules = [
 ];
 
 const UploadCoursePage = () => {
+  const router = useRouter();
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [price, setPrice] = useState<number | ''>('');
+  const [publishing, setPublishing] = useState(false);
+  const [saving, setSaving] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  async function submitCourse(isPublished: boolean) {
+    setError(null);
+    try {
+      if (!title.trim()) throw new Error('Title is required');
+      if (price !== '' && Number(price) < 0) throw new Error('Price must be positive');
+      const user = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('auth_user') || 'null') : null;
+      const educatorId = user?.user_id;
+      if (!educatorId) throw new Error('Missing educator id');
+
+      const body = {
+        educator_id: educatorId,
+        title: title.trim(),
+        description: description.trim() || null,
+        price: price === '' ? 0 : Number(price),
+        is_published: isPublished
+      };
+
+      await apiFetch('/api/courses', {
+        method: 'POST',
+        body: JSON.stringify(body)
+      });
+      router.replace('/educator/courses');
+    } catch (err: any) {
+      setError(err?.message || 'Failed to save course');
+    } finally {
+      setSaving(false);
+      setPublishing(false);
+    }
+  }
+
   return (
     <div>
       {/* --- Main Header --- */}
@@ -34,8 +74,28 @@ const UploadCoursePage = () => {
       {/* --- Course Card --- */}
       <div className="card">
         {/* Course Info */}
-        <input className="input-field" type="text" placeholder="Course Title" />
-        <textarea className="textarea-field" placeholder="Course Description" rows={4}></textarea>
+        <input
+          className="input-field"
+          type="text"
+          placeholder="Course Title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+        <textarea
+          className="textarea-field"
+          placeholder="Course Description"
+          rows={4}
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        ></textarea>
+        <input
+          className="input-field"
+          type="number"
+          placeholder="Price (₱)"
+          value={price}
+          onChange={(e) => setPrice(e.target.value === '' ? '' : Number(e.target.value))}
+          min={0}
+        />
         <select className="select-field">
           <option>Beginner</option>
           <option>Intermediate</option>
@@ -65,9 +125,28 @@ const UploadCoursePage = () => {
         </div>
 
         {/* Action Buttons */}
+        {error && <div style={{ color: '#b00020', marginBottom: '8px' }}>{error}</div>}
         <div className="btn-group">
-          <button className="btn btn-draft">Save as Draft</button>
-          <button className="btn btn-publish">Publish Course</button>
+          <button
+            className="btn btn-draft"
+            onClick={() => {
+              setSaving(true);
+              submitCourse(false);
+            }}
+            disabled={saving || publishing}
+          >
+            {saving ? 'Saving...' : 'Save as Draft'}
+          </button>
+          <button
+            className="btn btn-publish"
+            onClick={() => {
+              setPublishing(true);
+              submitCourse(true);
+            }}
+            disabled={saving || publishing}
+          >
+            {publishing ? 'Publishing...' : 'Publish Course'}
+          </button>
         </div>
       </div>
     </div>

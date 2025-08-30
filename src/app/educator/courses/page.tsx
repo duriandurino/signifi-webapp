@@ -8,6 +8,9 @@ import {
 } from 'lucide-react';
 import './courses.css'; 
 import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import { apiFetch } from '@/lib/api';
+import { useMemo } from 'react';
 
 
 const StarRating = ({ rating, count }: { rating: number, count: number }) => {
@@ -25,16 +28,52 @@ const StarRating = ({ rating, count }: { rating: number, count: number }) => {
 };
 
 
-// Placeholder courses data
-const placeholderCourses = [
-  { title: "Course File/Module", description: "Course description will appear here.", students: 0, modules: 0, price: "₱0", rating: 0, reviews: 0, status: "Draft" },
-  { title: "Course File/Module", description: "Course description will appear here.", students: 0, modules: 0, price: "₱0", rating: 0, reviews: 0, status: "Draft" },
-  { title: "Course File/Module", description: "Course description will appear here.", students: 0, modules: 0, price: "₱0", rating: 0, reviews: 0, status: "Draft" },
-];
+type Course = {
+  course_id: number;
+  title: string;
+  description: string | null;
+  price: number;
+  is_published: boolean;
+  created_at: string;
+  educator_id?: number;
+  institution_id?: number | null;
+  educator_name?: string | null;
+  institution_name?: string | null;
+};
 
 const CoursesPage = () => {
 
   const router = useRouter();
+  const [courses, setCourses] = useState<Course[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    async function load() {
+      setLoading(true);
+      setError(null);
+      try {
+        let path = '/api/courses';
+        const userRaw = typeof window !== 'undefined' ? localStorage.getItem('auth_user') : null;
+        if (userRaw) {
+          try {
+            const user = JSON.parse(userRaw);
+            if (user?.user_id) {
+              const qp = new URLSearchParams({ educator_id: String(user.user_id) });
+              path = `/api/courses?${qp.toString()}`;
+            }
+          } catch {}
+        }
+        const resp = await apiFetch<{ message: string; courses: Course[] }>(path);
+        setCourses(resp.courses || []);
+      } catch (err: any) {
+        setError(err?.message || 'Failed to load courses');
+      } finally {
+        setLoading(false);
+      }
+    }
+    load();
+  }, []);
 
   const handleUploadCourse = () => {
     router.push('/educator/courses/upload-course');
@@ -89,21 +128,26 @@ const CoursesPage = () => {
 
       {/* --- Course Cards Grid --- */}
       <section className="courses-grid">
-        {placeholderCourses.map((course, index) => (
-          <div key={index} className="course-card">
+        {loading && <div>Loading courses...</div>}
+        {error && !loading && <div style={{ color: '#b00020' }}>{error}</div>}
+        {!loading && !error && courses.length === 0 && (
+          <div>No courses yet.</div>
+        )}
+        {!loading && !error && courses.map((course) => (
+          <div key={course.course_id} className="course-card">
             <div className="card-image-header gradient-blue">
               <GraduationCap size={48} />
             </div>
             <div className="card-content">
               <h3>{course.title}</h3>
-              <p>{course.description}</p>
+              <p>{course.description || 'No description'}</p>
               <div className="course-meta">
-                <span><Users size={14} /> {course.students} students</span>
-                <span><BookCopy size={14} /> {course.modules} modules</span>
-                <span>{course.price}</span>
+                <span><Users size={14} /> - students</span>
+                <span><BookCopy size={14} /> - modules</span>
+                <span>₱{Number(course.price || 0).toLocaleString()}</span>
               </div>
               <div className="course-review-earnings">
-                <StarRating rating={course.rating} count={course.reviews} />
+                <StarRating rating={0} count={0} />
               </div>
             </div>
             <div className="card-actions">

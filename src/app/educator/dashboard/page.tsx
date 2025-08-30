@@ -9,6 +9,8 @@ import {
 import './dashboard.css';
 import Link from "next/link";
 import { usePathname } from "next/navigation"; 
+import { useEffect, useState } from 'react';
+import { apiFetch } from '@/lib/api';
 
 // Star rating component
 const StarRating = ({ rating }: { rating: number }) => {
@@ -24,19 +26,45 @@ const StarRating = ({ rating }: { rating: number }) => {
 
 const DashboardPage = () => {
   const pathname = usePathname(); 
+  const [totalCourses, setTotalCourses] = useState(0);
+  const [recentCourses, setRecentCourses] = useState<{ name: string; event: string; date: string; students: number }[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  // --- Placeholder data for now ---
-  const placeholderCourses = [
-    { name: "Course File/Module", event: "Draft", date: "-", students: 0 },
-    { name: "Course File/Module", event: "Draft", date: "-", students: 0 },
-    { name: "Course File/Module", event: "Draft", date: "-", students: 0 },
-    { name: "Course File/Module", event: "Draft", date: "-", students: 0 },
-  ];
-
-  const placeholderReviews = [
-    { name: "Student Name", rating: 0, quote: "No reviews yet", course: "Course File/Module" },
-    { name: "Student Name", rating: 0, quote: "No reviews yet", course: "Course File/Module" },
-  ];
+  useEffect(() => {
+    async function load() {
+      setLoading(true);
+      setError(null);
+      try {
+        let path = '/api/courses';
+        const raw = typeof window !== 'undefined' ? localStorage.getItem('auth_user') : null;
+        if (raw) {
+          try {
+            const user = JSON.parse(raw);
+            if (user?.user_id) {
+              const qp = new URLSearchParams({ educator_id: String(user.user_id) });
+              path = `/api/courses?${qp.toString()}`;
+            }
+          } catch {}
+        }
+        const resp = await apiFetch<{ message: string; courses: any[] }>(path);
+        const courses = resp.courses || [];
+        setTotalCourses(courses.length);
+        const recent = courses.slice(0, 4).map((c) => ({
+          name: c.title,
+          event: c.is_published ? 'Published' : 'Draft',
+          date: c.created_at ? new Date(c.created_at).toLocaleString() : '-',
+          students: 0
+        }));
+        setRecentCourses(recent);
+      } catch (err: any) {
+        setError(err?.message || 'Failed to load dashboard');
+      } finally {
+        setLoading(false);
+      }
+    }
+    load();
+  }, []);
 
   return (
     <>
@@ -63,7 +91,7 @@ const DashboardPage = () => {
         <div className="stat-card">
           <div className="stat-icon blue"><BookCopy size={24} /></div>
           <div className="stat-info">
-            <span className="stat-number">0</span>
+            <span className="stat-number">{totalCourses}</span>
             <span className="stat-label">Total Courses</span>
           </div>
         </div>
@@ -104,7 +132,9 @@ const DashboardPage = () => {
               <span>Date & Time</span>
               <span>Students</span>
             </div>
-            {placeholderCourses.map((course, index) => (
+            {loading && <div style={{ padding: '12px' }}>Loading...</div>}
+            {error && !loading && <div style={{ padding: '12px', color: '#b00020' }}>{error}</div>}
+            {!loading && !error && recentCourses.map((course, index) => (
               <div key={index} className="activity-row">
                 <span>{course.name}</span>
                 <span>
@@ -121,7 +151,7 @@ const DashboardPage = () => {
         <div className="card recent-reviews-card">
           <h3>Recent Reviews</h3>
           <div className="review-list">
-            {placeholderReviews.map((review, index) => (
+            {[{ name: "Student Name", rating: 0, quote: "No reviews yet", course: "-" }].map((review, index) => (
               <div key={index} className="review-item">
                 <div className="review-header">
                   <h4>{review.name}</h4>
