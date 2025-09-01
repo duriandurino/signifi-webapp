@@ -35,6 +35,20 @@ body {
   color: var(--text-primary);
   font-weight: 700;
 }
+/* --- Styles for the Right Side of the Header --- */
+
+.header-right-side {
+  display: flex;
+  align-items: center;
+  gap: 1rem; /* Creates space between the notification bell and the profile */
+}
+
+
+.notification-btn:hover {
+  background-color: #f3f4f6; 
+  color: var(--text-primary); 
+}
+
 .user-profile {
   display: flex;
   align-items: center;
@@ -66,7 +80,7 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.1rem;
 }
 .stat-card {
   background-color: var(--card-bg);
@@ -104,7 +118,7 @@ body {
 .content-grid {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  gap: 1.5rem;
+  gap: 1rem;
   align-items: start;
 }
 

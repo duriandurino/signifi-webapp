@@ -37,7 +37,7 @@ const Sidebar = () => {
     <aside className="sidebar">
       <div>
         <div className="sidebar-logo">
-          <Image src="/white_logo.png" alt="SigniFi Logo" width={50} height={50} />
+          <Image src="/SigniFi.png" alt="SigniFi Logo" width={30} height={30} />
           <h1>SigniFi</h1>
         </div>
         <nav className="sidebar-nav">

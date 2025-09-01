@@ -73,12 +73,30 @@ const DashboardPage = () => {
         <div className="startheader">
           <span>Dashboard</span>
         </div>
-        <div className="user-profile">
-          <Image src="/profile.jpg" alt="User Avatar" width={32} height={32} className="user-avatar" />
-          <span>Professor</span>
-          <ChevronDown size={16} />
+        <div className="header-right-side">
+          <button className="notification-btn">
+            <Image
+              src="/notif.svg"
+              alt="Notifications"
+              width={25}
+              height={25}
+            />
+          </button>
+
+          <div className="user-profile">
+            <Image
+              src="/profile.jpg"
+              alt="User Avatar"
+              width={32}
+              height={32}
+              className="user-avatar"
+            />
+            <span>Professor</span>
+            <ChevronDown size={16} />
+          </div>
         </div>
       </header>
+
 
       {/* --- Welcome Section --- */}
       <section className="welcome-section">

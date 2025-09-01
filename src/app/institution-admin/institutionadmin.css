@@ -42,16 +42,19 @@ body {
 
 .sidebar-logo {
   display: flex;
-  align-items: center;     /* keeps logo + text aligned vertically */
-  justify-content: flex-start; /* pushes content to the left */
-  gap: 0rem;             /* space between logo and text */
+  align-items: center;    
+  justify-content: flex-start; 
+  gap: .5rem;             
   padding: 0 0rem 0rem;
+  margin: 0;
+  margin-bottom: 10px;
+
 }
 
 
 .sidebar-logo h1 {
-  font-size: 1.3rem;
-  font-weight: 700;
+  font-size: 1.2rem;
+  font-weight: 600;
   color: var(--text-active-dark);
   margin: 0;
 }
@@ -89,21 +92,19 @@ body {
   font-weight: 500;
   color: var(--text-primary-dark);
   transition: all 0.2s ease-in-out;
-  border-left: 3px solid transparent; /* Placeholder for active border */
-  white-space: nowrap; 
+  border-left: 3px solid transparent; 
 }
 
 /* Icon styling */
 .nav-icon {
   color: var(--accent-blue-dark);
-  flex-shrink: 0; /* Prevents icon from shrinking */
+  flex-shrink: 0; 
 }
 
 .sidebar-nav li a:hover {
   background-color: var(--hover-bg-dark);
 }
 
-/* Style for the active navigation link */
 .sidebar-nav li.active a {
   background-color: var(--active-bg-dark); 
   color: var(--text-active-dark);
@@ -111,5 +112,5 @@ body {
 }
 
 .sidebar-footer {
-  margin-top: 1.5rem; /* Pushes content at the bottom down */
+  margin-top: 1.5rem; 
 }
