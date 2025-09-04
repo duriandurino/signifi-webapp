@@ -1,4 +1,4 @@
-"use client"; 
+"use client";
 
 import React, { memo, useMemo, useCallback } from 'react';
 import Image from 'next/image';
@@ -18,72 +18,47 @@ const Sidebar = memo(() => {
   }, [logout, router]);
 
   const navItems = useMemo(() => [
-    {
-      href: "/educator/dashboard",
-      icon: LayoutDashboard,
-      label: "Dashboard"
-    },
-    {
-      href: "/educator/courses", 
-      icon: BookOpen,
-      label: "Courses"
-    },
-    {
-      href: "/educator/students",
-      icon: Users,
-      label: "Students"
-    },
-    {
-      href: "/educator/analytics",
-      icon: BarChart2,
-      label: "Analytics"
-    },
-    {
-      href: "/educator/profile",
-      icon: User,
-      label: "Profile"
-    },
-    {
-      href: "/educator/settings",
-      icon: Settings,
-      label: "Settings"
-    }
+    { href: "/educator/dashboard", icon: LayoutDashboard, label: "Dashboard" },
+    { href: "/educator/courses", icon: BookOpen, label: "Courses" },
+    { href: "/educator/students", icon: Users, label: "Students" },
+    { href: "/educator/analytics", icon: BarChart2, label: "Analytics" },
+    { href: "/educator/profile", icon: User, label: "Profile" },
+    { href: "/educator/settings", icon: Settings, label: "Settings" }
   ], []);
 
   return (
-    <aside className="sidebar">
-      <div className="sidebar-top">
-        <div className="sidebar-logo">
-          <Image 
-            src="/black_logo.png" 
-            alt="SigniFi Logo" 
-            width={50} 
-            height={50}
-            priority
-          />
-          <h1>SigniFi</h1>
-        </div>
-        <nav className="sidebar-nav">
-          <ul>
-            {navItems.map(({ href, icon: Icon, label }) => (
-              <li key={href} className={pathname === href ? "active" : ""}>
-                <Link href={href} prefetch={true}>
-                  <Icon size={20} /> {label}
-                </Link>
-              </li>
-            ))}
-            <li>
-              <button onClick={handleLogout} className="logout-button">
-                <LogOut size={20} /> Logout
-              </button>
-            </li>
-          </ul>
-        </nav>
+    <aside className="educator-sidebar">
+      <div className="sidebar-logo">
+        <Image 
+          src="/SigniFi.png" 
+          alt="SigniFi Logo" 
+          width={30} 
+          height={30} 
+          priority
+        />
+        <h1>SigniFi</h1>
       </div>
+      <nav className="educator-sidebar-nav">
+        <ul>
+          {navItems.map(({ href, icon: Icon, label }) => (
+            <li key={href} className={pathname === href ? "active" : ""}>
+              <Link href={href}>
+                <Icon size={20} className="nav-icon" /> 
+                <span className="nav-label">{label}</span>
+              </Link>
+            </li>
+          ))}
+          <li>
+            <button onClick={handleLogout} className="logout-button">
+              <LogOut size={20} className="nav-icon" /> 
+              <span className="nav-label">Logout</span>
+            </button>
+          </li>
+        </ul>
+      </nav>
     </aside>
   );
 });
 
 Sidebar.displayName = 'Sidebar';
-
 export default Sidebar;

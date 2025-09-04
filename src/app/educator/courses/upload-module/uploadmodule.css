@@ -1,0 +1,143 @@
+:root {
+  --main-bg: #f5f5f5;
+  --card-bg: #ffffff;
+  --text-primary: #2d3748;
+  --text-secondary: #718096;
+  --border-color: #e2e8f0;
+  --btn-publish: #16a34a;
+  --btn-draft: #f59e0b;
+  --btn-danger: #dc2626;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: var(--main-bg);
+  color: var(--text-primary);
+  margin: 0;
+}
+
+/* Header */
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+.startheader {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+/* Page Header */
+.page-header {
+  margin: 1.5rem 0;
+}
+.page-header h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 0 0 0.3rem 0;
+}
+.page-header p {
+  color: var(--text-secondary);
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+/* Card */
+.card {
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05),
+    0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  margin-bottom: 1.5rem;
+}
+
+/* Input & Textarea */
+.input-field,
+.textarea-field {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  font-size: 0.95rem;
+  outline: none;
+}
+
+/* File Upload */
+.file-upload {
+  padding: 0.75rem 1rem;
+  border: 1.5px dashed var(--border-color);
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  background-color: #fafafa;
+}
+.file-upload label {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+.file-upload input {
+  width: 100%;
+  font-size: 0.9rem;
+}
+
+/* Lesson Card */
+.lesson-card {
+  background-color: #f9fafb;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+.lesson-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+.lesson-header h4 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+.btn-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--btn-danger);
+}
+
+/* Buttons */
+.btn {
+  padding: 0.7rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+}
+.btn-draft {
+  background-color: var(--btn-draft);
+  color: white;
+}
+.btn-publish {
+  background-color: var(--btn-publish);
+  color: white;
+}
+.btn.add-btn {
+  background-color: #3b82f6;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.btn-group {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
