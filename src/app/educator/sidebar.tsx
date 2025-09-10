@@ -1,20 +1,22 @@
 "use client";
 
-import React, { memo, useMemo, useCallback } from 'react';
+import React, { memo, useMemo, useCallback, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { LayoutDashboard, BookOpen, Users, BarChart2, User, Settings, LogOut } from 'lucide-react';
+import { LayoutDashboard, BookOpen, Users, BarChart2, User, Settings, LogOut, X } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 
 const Sidebar = memo(() => {
   const pathname = usePathname();
   const router = useRouter();
   const { logout } = useAuth();
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
 
   const handleLogout = useCallback(() => {
     logout();
     router.push('/login');
+    setShowLogoutModal(false);
   }, [logout, router]);
 
   const navItems = useMemo(() => [
@@ -49,13 +51,41 @@ const Sidebar = memo(() => {
             </li>
           ))}
           <li>
-            <button onClick={handleLogout} className="logout-button">
+            <button onClick={() => setShowLogoutModal(true)} className="logout-button">
               <LogOut size={20} className="nav-icon" /> 
               <span className="nav-label">Logout</span>
             </button>
           </li>
         </ul>
       </nav>
+
+      {/* --- Logout Confirmation Modal --- */}
+      {showLogoutModal && (
+        <div className="modal-backdrop">
+          <div className="modal-card">
+            <div className="modal-header">
+
+              <button
+                onClick={() => setShowLogoutModal(false)}
+                className="close-button"
+              >
+              </button>
+            </div>
+            <p>Are you sure you want to logout?</p>
+            <div className="modal-actions">
+              <button
+                onClick={() => setShowLogoutModal(false)}
+                className="btn-cancel"
+              >
+                Cancel
+              </button>
+              <button onClick={handleLogout} className="btn-logout">
+                Logout
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </aside>
   );
 });

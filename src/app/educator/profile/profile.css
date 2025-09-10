@@ -5,7 +5,7 @@
   --text-primary: #2d3748;
   --text-secondary: #718096;
   --text-light: #a0aec0;
-  --border-color: #e2e8f0;
+  --border-color: #D4D4D8;
   --accent-blue: #3b82f6;
   --accent-green: #34d399;
   --accent-yellow: #f59e0b;
@@ -15,30 +15,16 @@
 /* Header */
 .main-header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--border-color);
+  padding: 1.5rem .5rem;
 }
 .startheader {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   display: flex;
-  align-items: center;
   gap: 0.5rem;
   color: var(--text-primary);
   font-weight: 700;
 }
-.user-profile {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  font-weight: 500;
-}
-.user-avatar {
-  border-radius: 50%;
-  object-fit: cover;
-}
-
 /* --- Settings Page Layout --- */
 .settings-header {
   border-bottom: 1px solid var(--border-color);
@@ -46,10 +32,10 @@
 }
 .settings-layout {
   display: grid;
-  grid-template-columns: 1fr 3fr; 
+  grid-template-columns: 230px 1fr; 
   gap: .5rem;
-  margin-top: 1rem;
-  align-items: start;
+  margin-top: .0rem;
+  align-items: stretch;
 }
 
 /* --- Left Side Navigation Card --- */
@@ -57,7 +43,7 @@
   background-color: white;
   padding: 1rem;
   border-radius: 12px;
-  height: 730px;
+  height: 100%;
   box-shadow: 0 4px 10px rgba(0,0,0,0.03);
 }
 .settings-nav-card nav {
@@ -70,7 +56,7 @@
   border-radius: 8px;
   text-decoration: none;
   font-weight: 500;
-  color: var(--text-secondary);
+  color: var(--text-primary);
   transition: all 0.2s;
   font-size: 0.9rem;
 }
@@ -120,6 +106,7 @@
 
 .card-header-personalinformation {
   display: flex;
+  color: var(--text-primary);
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid var(--border-color);
@@ -130,6 +117,7 @@
 
 .card-header-settings {
   display: flex;
+  color: var(--text-primary);
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid var(--border-color);
@@ -140,6 +128,7 @@
 
 .card-header-edu {
   display: flex;
+  color: var(--text-primary);
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid var(--border-color);
@@ -148,7 +137,7 @@
   margin-bottom: 1rem;
 }
 
-.card-header-myprofile h4 { font-size: 1rem; margin: 0; font-weight: 600; }
+.card-header-myprofile h4 { font-size: 1rem; margin: 0; font-weight: 600; color: var(--text-primary);}
 .card-header-personalinformation h4 { font-size: 1rem; margin: 0; font-weight: 600; }
 .card-header-settings h4 { font-size: 1rem; margin: 0; font-weight: 600; }
 .card-header-edu h4 { font-size: 1rem; margin: 0; font-weight: 600; }
@@ -175,8 +164,8 @@
 }
 .settings-avatar { border-radius: 50%; }
 .profile-details span { display: block; }
-.profile-name { font-size: 1rem; font-weight: 600; }
-.profile-title, .profile-location { color: var(--text-secondary); font-size: .80rem;}
+.profile-name { font-size: 1rem; font-weight: 600; color: var(--text-primary);}
+.profile-title, .profile-location { color: var(--text-primary); font-size: .80rem;}
 
 .card-body-grid {
   display: grid;
@@ -185,6 +174,7 @@
 }
 .info-item {
   font-size: 0.9rem;
+  color: var(--text-primary);
 }
 .info-item label {
   display: block;
@@ -235,13 +225,13 @@
 /*--------- Right Side Content --------------*/
 
 .btn-add-cert {
-  background-color: #f0fdf4;
-  color: #16a34a;
-  border: 1px solid #16a34a;
+  background-color: #F0F9FF;
+  color: #4f46e5;
+  border: 1px solid #4f46e5 !important;
   padding: 0.5rem 1rem;
   border-radius: 6px;
   font-weight: 500;
-  font-size: .80rem;
+  font-size: .75rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -265,6 +255,7 @@
 
 .cert-details h5 {
   font-size: 1rem;
+  color: var(--text-primary);
   font-weight: 600;
   margin: 0 0 0.25rem 0;
 }
@@ -278,7 +269,7 @@
 
 .cert-meta {
   font-size: 0.875rem;
-  color: var(--text-muted);
+  color: var(--text-primary);
   margin-right: 10px;
 }
 
@@ -313,14 +304,24 @@
   height: 100%;
 }
 
+.account-settings-form input {
+  color: var(--text-primary);   
+  font-weight: 500; 
+}
+
 .account-settings-form {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem; /* Space between rows */
+  gap: 1rem; /* Space between rows */
 }
 
-.form-row { display: flex; gap: 1.5rem; }
-.form-group { flex: 1; }
+.form-row {
+  display: flex;
+  gap: 1.5rem;       /* space between fields */
+  flex-wrap: wrap;    /* allows wrapping on smaller screens */
+}
+
+.form-group { flex: 1;  min-width: 200px;}
 .form-group label {
   display: block;
   font-weight: 500;
@@ -334,13 +335,15 @@
   border-radius: 8px;
   border: 1px solid var(--border-color);
   font-size: 0.9rem;
+  font-weight: 400;
   box-sizing: border-box;
+  color: var(--text-secondary);
 }
 
 /* Make disabled inputs look different */
 .form-group input:disabled {
   background-color: #f9fafb;
-  color: var(--text-secondary);
+  color: var(--text-primary);
 }
 
 .email-status {
@@ -365,7 +368,8 @@
   background-color: #f3f4f6;
   border-right: 1px solid var(--border-color);
   font-weight: 500;
-  color: var(--text-secondary);
+  font-size: .9rem;
+  color: var(--text-primary);
 }
 
 .phone-input-group input {
@@ -382,21 +386,29 @@
   box-shadow: 0 0 0 1px var(--primary-blue);
 }
 
-.section-divider {
-  height: 1px;
-  background-color: var(--border-color);
-  margin: 1rem 0;
+.account-settings-form h5 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
 }
 
 .form-actions {
-    margin-top: 1rem;
+  margin-top: 1rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
 }
 
-/* We reuse the button styles from the profile page */
+.section-divider {
+  height: 1px;
+  background-color: var(--border-color);
+  margin: 2rem 0;
+}
+
 .btn.btn-primary {
-  background-color: #f0fdf4;
-  color: #16a34a;
-  border: 1px solid #16a34a;
+  background-color: #51A2FF;
+  color: white;
   padding: 0.5rem 1rem;
   border-radius: 6px;
   font-weight: 500;
@@ -405,6 +417,54 @@
   align-items: center;
   gap: 0.5rem;
   cursor: pointer;}
+
+  .delete-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;    
+  color: #ef4444;   /* red for warning */
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.delete-icon {
+  color: #ef4444;   /* red color for the trash icon */
+}
+
+  .delete-account-card {
+  background-color: white;
+  border-radius: 12px;
+  padding: 2rem;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.delete-account-card h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.delete-account-card p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.btn-delete-account {
+  background-color: #FF6467;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  cursor: pointer;
+  width: fit-content;
+  transition: all 0.2s;
+}
 
 /* --- Responsive Adjustments --- */
 @media (max-width: 1024px) {

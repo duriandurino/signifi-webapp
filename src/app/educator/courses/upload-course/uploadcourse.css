@@ -3,17 +3,17 @@
   --card-bg: #ffffff;
   --text-primary: #2d3748;
   --text-secondary: #718096;
-  --border-color: #e2e8f0;
+  --border-color: #D4D4D8; 
   --accent-blue: #3b82f6;
   --accent-green: #34d399;
   --accent-yellow: #f59e0b;
   --accent-cyan: #22d3ee;
-  --btn-publish: #16a34a;
-  --btn-draft: #f59e0b;
+  --btn-publish: #1C69A8;
+  --btn-draft: #36BBA7;
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   background-color: var(--main-bg);
   color: var(--text-primary);
   margin: 0;
@@ -47,6 +47,7 @@ body {
   justify-content: space-between;
   align-items: center;
   margin: 1.5rem 0;
+  margin-left: 10px;
 }
 .page-header h2 {
   font-size: 1.3rem;
@@ -66,16 +67,17 @@ body {
   padding: 1.5rem;
   box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05),
               0 2px 4px -1px rgba(0,0,0,0.03);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 /* Input & Textarea */
 .input-field, .textarea-field, .select-field {
   width: 100%;
   padding: 0.75rem 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: .8rem;
   border-radius: 10px;
-  border: 1px solid #E2E8F0;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 1px 3px var(--shadow-color);
   font-size: 0.95rem;
   outline: none;
 }
@@ -114,17 +116,101 @@ body {
   padding: 0.75rem 1.5rem;
   border-radius: 8px;
   font-weight: 500;
+  font-size: .9rem;
   cursor: pointer;
   border: none;
 }
 .btn-draft { background-color: var(--btn-draft); color: white; }
 .btn-publish { background-color: var(--btn-publish); color: white; }
 
+/* Action Buttons */
 .btn-group {
   display: flex;
+  justify-content: flex-end; /* align buttons to the right */
   gap: 1rem;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
 }
+
+/* --- Modules Section --- */
+.modules-section {
+  margin-top: .5rem;
+}
+
+.modules-section h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  margin-left: 10px;
+}
+
+.modules-list {
+  background-color: #f7fafc; /* light gray background */
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+/* Each module item */
+.module-item {
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+}
+
+/* Add Module Button Box */
+.add-module-box {
+  margin-top: 2rem;
+}
+
+.add-module-btn {
+  width: 100%;
+  background-color: #ffffff;
+  border: 1px dashed var(--accent-blue);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  color: var(--accent-blue);
+  font-weight: 500;
+  display: flex;              /* Flexbox for alignment */
+  align-items: center;        /* Vertically center icon & text */
+  justify-content: center;    /* Center horizontally */
+  gap: 0.5rem;                /* Space between + and text */
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.add-module-btn:hover {
+  background-color: #ebf8ff;
+}
+
+/* Form row wrapper for side-by-side fields */
+.form-row {
+  display: flex;
+  gap: 1rem; /* space between price and level */
+  margin-bottom: 1rem;
+}
+
+.form-group {
+  flex: 1; /* makes both fields take equal width */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Label styling */
+.input-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-left: 5px;
+  margin-bottom: .5rem;
+  color: var(--text-dark);
+}
+
+
 
 /* Responsive */
 @media(max-width: 768px){

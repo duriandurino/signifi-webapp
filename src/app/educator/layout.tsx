@@ -34,7 +34,7 @@ export default function EducatorLayout({
   }
 
   return (
-    <div className="dashboard-layout">
+    <div className="educator-layout">
       <Sidebar /> 
       <main className="main-content">
         {children} 

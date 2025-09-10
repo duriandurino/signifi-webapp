@@ -1,0 +1,149 @@
+/* --- Global Styles & Color Palette --- */
+:root {
+  --dark-blue: #081825;
+  --light-blue: #081825;
+  --bg-page: #081825;
+  --text-white: #FFFFFF;
+}
+
+body {
+  font-family: 'Segoe UI', 'Roboto', sans-serif;
+  margin: 0;
+}
+
+.page-wrapper {
+  background-color: var(--bg-page);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  box-sizing: border-box;
+  
+}
+
+/* --- The Main Window Container --- */
+.selection-window {
+  width: 100%;
+  max-width: 900px;
+  height: 600px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden; /* Important for the rounded corners on the children */
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #3661f2; 
+}
+
+.window-bar {
+  background-color: #3661f2;
+  padding: 0.75rem;
+  display: flex;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+.dot {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: #E5E7EB;
+}
+
+/* --- Split Container for the Two Panels --- */
+.split-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  position: relative; /* This is the anchor for the central logo */
+}
+
+/* --- Central Overlapping Logo --- */
+.central-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* This perfectly centers the logo */
+  width: 120px;
+  height: 120px;
+  background-color: white;
+  border-radius: 24px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--dark-blue);
+  z-index: 10;
+}
+
+/* --- Common Styles for Both Panels --- */
+.selection-panel {
+  width: 50%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1.5rem;
+  text-align: center;
+  color: var(--text-white);
+  box-sizing: border-box;
+}
+.selection-panel h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 2rem;
+}
+.illustration-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+/* --- Button and Link Styles --- */
+.btn {
+  background-color: white;
+  padding: 0.70rem 3rem;
+  border-radius: 99px; /* Fully rounded */
+  border: 2px soli.5d rgba(255, 255, 255, 0.5); /* Subtle white border */
+  font-weight: 600;
+  font-size: .8rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  margin-top: 2.5rem;
+}
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+.btn-recruiter {
+  color: var(--dark-blue);
+}
+.btn-seeker {
+  color: var(--dark-blue);
+}
+
+.login-link {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+.login-link a {
+  color: #3661f2;
+  font-weight: 500;
+}
+
+.split-container {
+  display: flex;
+  align-items: stretch; 
+  gap: 2rem; 
+}
+
+.vertical-line {
+  width: .5px;            
+  background-color: #D4D4D8; 
+  align-self: center;
+  height: 500px;
+}

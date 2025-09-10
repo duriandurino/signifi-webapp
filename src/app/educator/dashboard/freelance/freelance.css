@@ -1,0 +1,267 @@
+  :root {
+    --text-dark: #2D3748;      
+    --text-light: #2D3748;
+    --bg-main: #F7FAFC;        
+    --border-light: #E2E8F0;    
+    --shadow-color: rgba(0, 0, 0, 0.05); 
+    --green-bg: #E6FFFA;
+    --green-text: #2D9D92;
+    --blue-bg: #EBF8FF;
+    --blue-text: #4299E1;
+  }
+
+  body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  margin: 0;
+  background-color: var(--educator-main-bg);
+}
+
+  .main-content {
+  flex: 1;
+  padding: 1rem;
+}
+
+  /* --- Top Header --- */
+  .page-top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .page-top-header h1 {
+    font-size: 1.3rem; 
+    font-weight: 650;
+    color: var(--text-dark);
+    margin: 0;
+    margin-left: 10px;
+  }
+  .top-header-actions {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+  }
+  .icon-button {
+    background-color: white;
+    border: 1px solid var(--border-light);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-dark);
+    cursor: pointer;
+  }
+
+.header-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.header-subtext {
+  font-size: 0.9rem;
+  color: var(--text-dark)!important;
+  margin: 0; 
+  font-weight: 400;
+  margin-top: 10px;
+  margin-left: 10px !important;
+}
+
+.header-profile {
+  display: flex;
+  align-items: center;  /* Vertically aligns the avatar, text, and chevron */
+  gap: 0.75rem;         /* The space between the elements */
+  padding: 0.5rem;      /* Adds some space inside the clickable area */
+  border-radius: 8px;   /* Gives it rounded corners */
+  cursor: pointer;
+  transition: background-color 0.2s;
+  min-width: 220px;     /* Gives the component a nice minimum width */
+}
+
+.header-profile:hover {
+  background-color: #f3f4f6; /* Replace with your desired hover color */
+}
+
+/* The circular container for the avatar image */
+.header-avatar-wrapper {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0; /* Prevents the avatar from shrinking if space is tight */
+}
+.header-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* The container for the name and email text */
+.header-user-info {
+  display: flex;
+  flex-direction: column;
+  
+  /* THIS IS THE KEY CHANGE */
+  flex-grow: 1; /* This makes the info block expand to take all available space */
+}
+
+/* The user's name */
+.user-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-dark); /* Make sure you have this variable in your root */
+}
+
+/* The user's email address */
+.user-email {
+  font-size: 0.8rem;
+  color: var(--text-light); /* Make sure you have this variable in your root */
+}
+
+/* The chevron icon on the far right */
+.chevron-icon {
+  color: var(--text-light);
+  flex-shrink: 0; /* Prevents the icon from shrinking */
+}
+
+  /* --- Tabs --- */
+  .dashboard-tabs { margin-bottom: 1.5rem; }
+  .tab-label {
+    background-color: #CAD5E2; 
+    border: none;
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-dark);
+  }
+
+  /* --- Stats Cards --- */
+  .stats-cards-grid {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    justify-content: flex-start; 
+  }
+  .stat-card {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 12px;
+    border: 1px solid var(--border-light);
+    box-shadow: 0 1px 3px var(--shadow-color);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    height: 75px;
+    min-width: 220px; /* Give cards a minimum width */
+  }
+
+  .stat-icon-wrapper {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #CAD5E2;
+    color: var(--text-dark);
+  }
+  .stat-value { font-size: 1.2rem; font-weight: 700; display: block; color: var(--text-dark);}
+  .stat-label { font-size: 0.8rem; color: var(--text-light); }
+
+  /* --- Main Content Grid --- */
+  .dashboard-main-grid {
+    display: grid;
+  grid-template-columns: 2fr 1fr; 
+    gap: 1rem;
+    align-items: start;
+  }
+  .content-card {
+    background-color: white;
+    border-radius: 16px;
+    border: 1px solid var(--border-light);
+    padding: 1.5rem 2rem;
+    box-shadow: 0 1px 3px var(--shadow-color);
+  }
+  .content-card h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0 0 1.5rem 0;
+    color: var(--text-dark);
+  }
+
+  /* Course Activity Table */
+  .activity-table .table-header {
+    display: grid;
+    grid-template-columns: 3fr 1fr 1.5fr 1fr;
+    gap: 1rem;
+    color: var(--text-dark);
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border-light);
+    text-transform: uppercase;
+  }
+  .activity-table .table-row {
+    display: grid;
+    grid-template-columns: 3fr 1fr 1.5fr 1fr;
+    gap: 1rem;
+    align-items: center;
+    padding: 1rem 0;
+    color: var(--text-dark);
+    border-bottom: 1px solid var(--border-light);
+    font-size: 0.9rem;
+  }
+  .activity-table .table-row:last-child { border-bottom: none; }
+  .badge {
+    padding: 0.2rem 0.6rem;
+    border-radius: 99px;
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+  .badge.published { background-color: var(--green-bg); color: var(--green-text); }
+  .badge.draft { background-color: var(--blue-bg); color: var(--blue-text); }
+
+  /* Student Reviews Card */
+  .reviews-list { display: flex; flex-direction: column; gap: 1.25rem; }
+  .review-item { padding-bottom: 1.25rem; border-bottom: 1px solid var(--border-light); }
+  .review-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .review-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem; }
+  .star-rating { display: flex; gap: 0.1rem; }
+  .star-rating .filled { color: #FBBF24; }
+  .star-rating .empty { color: var(--border-light); }
+  .review-text { font-size: 0.875rem; line-height: 1.6; margin: 0 0 0.5rem 0; color: var(--text-dark);}
+  .review-course-source { font-size: 0.75rem; color: var(--text-dark); }
+  .review-header h4 {
+  color: var(--text-dark);
+  font-weight: 500;
+}
+
+
+  /* --- White container for all content except header --- */
+  .dashboard-content-box {
+    background: white;
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px var(--shadow-color);
+  }
+
+  /* --- Add border to every inner box --- */
+  .bordered {
+    border: 1px solid var(--border-light);
+  }
+
+  .dashboard-wrapper {
+  display: flex;
+  min-height: 100vh;
+  background: var(--bg-main);
+  gap: 1.5rem; /* <— THIS is your space between sidebar and dashboard */
+}
+
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .dashboard-main-grid { grid-template-columns: 1fr; }
+  }

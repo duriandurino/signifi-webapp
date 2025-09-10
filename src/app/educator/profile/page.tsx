@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { ChevronDown, Pencil, User, Plus, CheckCircle, MoreVertical} from "lucide-react";
+import { ChevronDown, Pencil, User, Plus, CheckCircle, MoreVertical,Trash2} from "lucide-react";
 import "./profile.css";
 
 const ProfilePage = () => {
@@ -30,18 +30,7 @@ const ProfilePage = () => {
       {/* --- Main Header --- */}
       <header className="main-header">
         <div className="startheader">
-          <span>Account Settings</span>
-        </div>
-        <div className="user-profile">
-          <Image
-            src="/profile.jpg"
-            alt="User Avatar"
-            width={32}
-            height={32}
-            className="user-avatar"
-          />
-          <span>Professor</span>
-          <ChevronDown size={16} />
+          <span>Account Information</span>
         </div>
       </header>
 
@@ -231,84 +220,92 @@ const ProfilePage = () => {
             )}
 
             {activeTab === "account" && (
-              <div className="info-card">
-                <div className="card-header-settings">
+            <div className="info-card">
+              <div className="card-header-settings">
                 <h4>Account Settings</h4>
-                {/* No edit button needed here as the form is always editable */}
-                </div>
-                
-                <form className="account-settings-form">
-                {/* --- Personal Details --- */}
+              </div>
+
+              {/* --- Profile Info Update --- */}
+              <form className="account-settings-form">
+                <h5>Personal Information</h5>
                 <div className="form-row">
-                    <div className="form-group">
+                  <div className="form-group">
                     <label htmlFor="firstName">First Name</label>
                     <input type="text" id="firstName" defaultValue="Kent" />
-                    </div>
-                    <div className="form-group">
+                  </div>
+                  <div className="form-group">
                     <label htmlFor="lastName">Last Name</label>
                     <input type="text" id="lastName" defaultValue="Professor" />
-                    </div>
+                  </div>
                 </div>
-                
-                <div className="form-group">
-                    <label htmlFor="email">Email Address</label>
-                    <input type="email" id="email" defaultValue="kent.professor@signifi.com" disabled />
-                    <div className="email-status">
-                    <CheckCircle size={14} /> Email verified
-                    </div>
-                </div>
-                
+
                 <div className="form-row">
-                    <div className="form-group">
+                  <div className="form-group">
                     <label htmlFor="phone">Phone Number</label>
                     <div className="phone-input-group">
                         <span className="country-code">+63</span>
                         <input type="tel" id="phone" defaultValue="9171234567" />
                     </div>
-                    </div>
-                    <div className="form-group">
+                  </div>
+                  <div className="form-group">
                     <label htmlFor="timezone">Time Zone</label>
                     <select id="timezone">
                         <option>Asia/Manila (GMT+8)</option>
                         <option>America/New_York (GMT-4)</option>
                         <option>Europe/London (GMT+1)</option>
                     </select>
-                    </div>
+                  </div>
                 </div>
-                
-                <div className="section-divider"></div>
-                
-                {/* --- Password Update --- */}
-                <div className="form-group">
-                    <label htmlFor="currentPassword">Current Password</label>
-                    <input type="password" id="currentPassword" />
-                </div>
-                
-                <div className="form-row">
-                    <div className="form-group">
-                    <label htmlFor="newPassword">New Password</label>
-                    <input type="password" id="newPassword" />
-                    </div>
-                    <div className="form-group">
-                    <label htmlFor="confirmPassword">Confirm New Password</label>
-                    <input type="password" id="confirmPassword" />
-                    </div>
-                </div>
-                
-                <div className="form-actions">
-                    <button type="submit" className="btn btn-primary">Update Password</button>
-                </div>
-                </form>
-            </div>
-            )}
 
-            {activeTab === "delete" && (
-              <div>
-                <h4>Delete Account</h4>
-                <p>This action is permanent. Are you sure you want to delete?</p>
-                <button className="btn-danger">Yes, Delete My Account</button>
-              </div>
-            )}
+                <div className="form-actions">
+                  <button type="submit" className="btn btn-primary">
+                    Save Changes
+                  </button>
+                </div>
+              </form>
+
+              <div className="section-divider"></div>
+
+              {/* --- Password Update --- */}
+              <form className="account-settings-form">
+                <h5>Update Password</h5>
+
+                <div className="form-group">
+                  <label htmlFor="currentPassword">Current Password</label>
+                  <input type="password" id="currentPassword" placeholder="Enter current password" />
+                </div>
+
+                <div className="form-row">
+                  <div className="form-group">
+                    <label htmlFor="newPassword">New Password</label>
+                    <input type="password" id="newPassword" placeholder="Enter new password" />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="confirmPassword">Confirm New Password</label>
+                    <input type="password" id="confirmPassword" placeholder="Confirm new password" />
+                  </div>
+                </div>
+
+                <div className="form-actions">
+                  <button type="submit" className="btn btn-primary">
+                    Update Password
+                  </button>
+                </div>
+              </form>
+            </div>
+          )}
+
+
+          {activeTab === "delete" && (
+            <div className="delete-account-card">
+              <h4 className="delete-header">
+                <Trash2 size={18} className="delete-icon" />
+                Delete Account
+              </h4>
+              <p>This action is permanent. Are you sure you want to delete your account?</p>
+              <button className="btn-delete-account">Yes, Delete My Account</button>
+            </div>
+          )}
           </div>
         </div>
       </div>

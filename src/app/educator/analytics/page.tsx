@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { ChevronDown, BarChart2, Trophy, Star, BarChart } from 'lucide-react';
+import { ChevronDown, BarChart2, Trophy, Star, BarChart, Bell } from 'lucide-react';
 import dynamic from 'next/dynamic';
 
 import {
@@ -87,21 +87,31 @@ const AnalyticsPage = () => {
 
   return (
     <>
-      <header className="main-header">
-        <div className="startheader">
-          <span>Analytics</span>
+      <div className="page-top-header">
+        <div className="header-text">
+          <h1>Welcome, Professor</h1>
+          <p className="header-subtext">Check your progress here</p>
         </div>
-        <div className="user-profile">
-          <Image src="/profile.jpg" alt="User Avatar" width={32} height={32} className="user-avatar" />
-          <span>Professor</span>
-          <ChevronDown size={16} />
+        <div className="top-header-actions">
+          <button className="icon-button notification-button">
+            <Bell size={22} />
+          </button>
+          <div className="header-profile">
+            <div className="header-avatar-wrapper">
+              <Image src="/profile.jpg" alt="User Avatar" width={40} height={40} className="header-avatar" />
+            </div>
+            <div className="header-user-info">
+              <span className="user-name">Prof. SigniFi</span>
+              <span className="user-email">signifi@gmail.com</span>
+            </div>
+            <ChevronDown size={20} className="chevron-icon" />
+          </div>
         </div>
-      </header>
+      </div>
 
       {!hasData ? (
         // --- EMPTY STATE ---
         <div className="placeholder-state analytics-placeholder">
-          <BarChart size={48} className="placeholder-icon" />
           <h3>No analytics data yet</h3>
           <p>
             Once students start enrolling and completing your courses, you’ll see revenue and performance analytics here.
