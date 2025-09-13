@@ -1,0 +1,412 @@
+  :root {
+    --text-dark: #2D3748;      /* Dark gray-blue for text */
+    --text-light: #2D3748;     /* Lighter gray for secondary text */
+    --bg-main: #F7FAFC;        /* The main page background color */
+    --border-light: #D4D4D8;    /* Light border for cards */
+    --shadow-color: rgba(0, 0, 0, 0.05); /* Soft shadow color */
+    --green-bg: #E6FFFA;
+    --green-text: #2D9D92;
+    --blue-bg: #EBF8FF;
+    --blue-text: #4299E1;
+    --text-muted: #52525C;
+    --accent-blue: #21BCFF;
+  }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  margin: 0;
+  background-color: var(--educator-main-bg);
+}
+
+.main-content {
+  flex: 1;
+  padding: 1rem;
+}
+
+/* --- Top Header --- */
+.page-top-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.page-top-header h1 {
+  font-size: 1.3rem; 
+  font-weight: 650;
+  color: var(--text-dark);
+  margin: 0;
+  margin-left: 10px;
+}
+
+.top-header-actions {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+.icon-button {
+  background-color: white;
+  border: 1px solid var(--border-light);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-dark);
+  cursor: pointer;
+}
+
+.header-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.header-subtext {
+  font-size: 0.9rem;
+  color: var(--text-dark)!important;
+  margin: 0; 
+  font-weight: 400;
+  margin-top: 10px;
+  margin-left: 10px !important;
+}
+
+.header-profile {
+  display: flex;
+  align-items: center;  
+  gap: 0.75rem;         
+  padding: 0.5rem;      
+  border-radius: 8px;   
+  cursor: pointer;
+  transition: background-color 0.2s;
+  min-width: 220px;     
+}
+
+.header-profile:hover {
+  background-color: #f3f4f6; 
+}
+
+.header-avatar-wrapper {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0; 
+}
+
+.header-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.header-user-info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.user-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.user-email {
+  font-size: 0.8rem;
+  color: var(--text-light);
+}
+
+.chevron-icon {
+  color: var(--text-light);
+  flex-shrink: 0; 
+}
+
+.header-text h2 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin: 0 0 .3rem 0;
+    color: var(--text-dark);
+}
+
+.header-text p {
+    color: var(--text-muted);
+    margin: 0;
+}
+
+/* --- Top Right Buttons --- */
+.top-right-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Base button */
+.btn {
+  padding: 0.75rem 1.5rem;   /* unified padding */
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 0.88rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: background-color 0.2s, border-color 0.2s;
+  height: 42px; /* ensures consistent height */
+}
+
+.btn.managecourse-btn {
+  background-color: white;
+  border: 1px solid var(--border-light); 
+  color: var(--text-dark);
+}
+.btn.managecourse-btn:hover {
+  background-color: #f8fafc;
+}
+
+.btn.createcourse-btn {
+  background-color: #1C69A8; 
+  color: white;
+  border: none;
+}
+.btn.createcourse-btn:hover {
+  background-color: #15557a;
+}
+
+.content-container {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  margin-bottom: 2rem;
+}
+
+/* --- Filter Bar --- */
+.filter-bar {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background-color: white;
+    padding: .8rem;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    margin-bottom: 1.3rem;
+}
+
+.search-input-wrapper {
+    position: relative;
+    display: flex;
+    width: 100%;
+    max-width: 600px;
+    height: 40px;
+    color: var(--text-muted);
+}
+
+.search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-dark);
+}
+
+.filter-dropdown {
+    width: 200px;
+    padding: 0.5rem 0.5rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-light);
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    min-width: 180px;
+    background-color: white;
+}
+
+.search-input-wrapper input {
+    width: 100%;
+    box-sizing: border-box; 
+    padding-left: 2.5rem;
+    padding: 0.85rem 1rem 0.85rem 2.5rem;
+    border-width: 1.5px;                 
+    border: 1px solid var(--border-light);
+    border-radius: 10px;  
+    font-size: 0.9rem;
+    background-color: #ffffff; 
+    outline: none;           
+    transition: border-color 0.2s, box-shadow 0.2s; 
+}
+
+/* --- Courses Grid --- */
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+/* --- Course Card --- */
+.course-card {
+    background-color: white;
+    border: 1px solid #D1D5DC;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-image-header {
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    position: relative;
+}
+
+.gradient-blue {
+  background: #21BCFF; /* Published */
+}
+
+.gradient-green {
+  background: #38D5BE; /* Draft */
+}
+
+.gradient-gray {
+  background: linear-gradient(135deg, #9CA3AF, #6B7280); /* In Review */
+}
+
+/* --- Course Status Text --- */
+.course-status {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.course-status.published {
+  color: #2C92B8; /* Blue */
+}
+
+.course-status.draft {
+  color: #38D5BE; /* Green */
+}
+
+.course-status.review {
+  color: #b93030; 
+
+}
+
+
+
+.card-content {
+    padding: 1.25rem;
+    flex-grow: 1;
+}
+
+.card-content h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.13rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.card-content p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin: 0 0 1rem 0;
+}
+
+.course-meta {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.course-meta span { display: flex; align-items: center; gap: 0.3rem; }
+
+.course-review-earnings { display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; }
+.course-star-rating { display: flex; align-items: center; gap: 0.5rem; color: var(--text-muted); }
+.course-star-rating .stars { display: flex; gap: 0.1rem; }
+.course-star-rating .stars .filled { color: #f59e0b; fill: #f59e0b; }
+.course-star-rating .stars .empty { color: var(--border-light); }
+
+.card-actions {
+    padding: 0 1.25rem 1.25rem 1.25rem;
+    display: flex;
+    gap: 0.5rem;
+    border-top: 1px solid var(--border-light);
+    margin-top: 1rem;
+    padding-top: 1rem;
+}
+
+.card-actions .btn {
+    padding: 0.5rem 0.8rem;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.btn-edit { background-color: #eff6ff; color: #3b82f6; }
+.btn-preview { background-color: #F1F5F9; color: #45556C; }
+.btn-more { margin-left: auto; background-color: #f9fafb; border: 1px solid var(--border-light); }
+
+/* --- Pagination Container --- */
+.pagination {
+    display: flex;
+    justify-content: center; /* Always center the pagination */
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 2rem;
+}
+
+/* --- Pagination Links --- */
+.page-link {
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    color: var(--text-muted);
+    border-radius: 6px;
+    font-size: 0.9rem;
+    transition: background-color 0.2s, color 0.2s;
+    cursor: pointer;
+}
+
+/* --- Active Page --- */
+.page-link.active {
+    background-color: #1e5fa8;
+    color: white;
+    font-weight: 500;
+}
+
+/* --- Disabled Page --- */
+.page-link.disabled {
+    color: #d1d5db;
+    pointer-events: none; /* Makes it unclickable */
+    cursor: default; /* Show default cursor */
+}
+
+/* --- Hover Effect --- */
+.page-link:not(.disabled):hover {
+    background-color: #f3f4f6;
+}
+
+/* Optional: subtle hover for active page */
+.page-link.active:hover {
+    background-color: #1e5fa8; /* Slightly darker blue */
+}
+
+/* Previous & Next buttons */
+.page-link.prev-next {
+    font-weight: 500;
+}

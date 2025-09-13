@@ -128,13 +128,13 @@
   /* --- Tabs --- */
   .dashboard-tabs { margin-bottom: 1.5rem; }
   .tab-label {
-    background-color: #CAD5E2; 
+    background-color: #314158; 
     border: none;
     padding: 0.6rem 1rem;
     border-radius: 8px;
     font-size: 0.875rem;
     font-weight: 500;
-    color: var(--text-dark);
+    color: white;
   }
 
   /* --- Stats Cards --- */
@@ -164,8 +164,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #CAD5E2;
-    color: var(--text-dark);
+    background-color: #314158;
+    color: #E2E8F0;
   }
   .stat-value { font-size: 1.2rem; font-weight: 700; display: block; color: var(--text-dark);}
   .stat-label { font-size: 0.8rem; color: var(--text-light); }

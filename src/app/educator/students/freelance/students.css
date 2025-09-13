@@ -5,20 +5,19 @@
   --text-gray: #79716B;
   --text-muted: #6b7280;
   --bg-light: #f9fafb;
-  --border-light: #e5e7eb;
+  --border-light: #D1D5DC;
   --text-light: #9ca3af;
 }
 
- body {
+body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   margin: 0;
 }
 
-  .main-content {
+.main-content {
   flex: 1;
   padding: 1rem;
 }
-
 
 /* --- Top Header --- */
 .page-top-header {
@@ -57,7 +56,6 @@
   display: flex;
   flex-direction: column;
 }
-
 .header-subtext {
   font-size: 0.9rem;
   color: var(--text-dark)!important;
@@ -66,7 +64,6 @@
   margin-top: 10px;
   margin-left: 10px !important;
 }
-
 .header-profile {
   display: flex;
   align-items: center; 
@@ -77,11 +74,9 @@
   transition: background-color 0.2s;
   min-width: 220px;     
 }
-
 .header-profile:hover {
   background-color: #f3f4f6; 
 }
-
 .header-avatar-wrapper {
   width: 40px;
   height: 40px;
@@ -94,13 +89,11 @@
   height: 100%;
   object-fit: cover;
 }
-
 .header-user-info {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
 }
-
 .user-name {
   font-size: 0.9rem;
   font-weight: 600;
@@ -110,7 +103,6 @@
   font-size: 0.8rem;
   color: var(--text-light); 
 }
-
 .chevron-icon {
   color: var(--text-light);
   flex-shrink: 0;
@@ -119,7 +111,7 @@
 /* --- Page Header & Actions --- */
 .page-header {
   display: flex;
-  justify-content: flex-end; /* Push buttons to the right */
+  justify-content: flex-end; 
   align-items: center;
   margin-top: 2rem;
 }
@@ -197,79 +189,151 @@
   color: #1f2937;
   font-size: 0.9rem; 
 }
-
 .student-filter-dropdown {
   color: #1f2937; 
   font-size: 0.9rem; 
 }
-
-/* Optional: placeholder color for search input */
 .student-search-input::placeholder {
-  color: #6b7280; /* muted gray for placeholder */
+  color: #6b7280; 
 }
 
-/* --- Student Table --- */
-.student-table { font-size: 0.875rem; }
-.table-header, .table-row {
+/* --- Table Wrapper --- */
+.table-container {
+  width: 100%;
+  margin-top: 1.5rem;
+  overflow-x: auto;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+}
+
+/* --- Table Header & Rows --- */
+.table-header,
+.table-row {
   display: grid;
-  grid-template-columns: 2fr 2fr 2.5fr 1.5fr; /* more space for progress & last activity */
-  column-gap: 2rem; /* spacing between columns */
+  grid-template-columns: 2fr 2fr 1.8fr 1.3fr 1.2fr 1.5fr;
+  column-gap: 1rem;
+  padding: 0.75rem 0.5rem;
   align-items: center;
-  padding: 0.75rem 1rem;
-  border-bottom: 1px solid #D4D4D4;
 }
 
 .table-cell {
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: normal; /* allow multi-line wrapping */
+  white-space: normal;
   word-wrap: break-word;
+  font-size: .870 rem;
+  font-weight: 500;
+  color: var(--text-dark);
 }
 
-.last-activity {
-  color: var(--text-dark); 
-  font-size: 0.875rem; 
+.table-row {
+  font-size: 0.85rem;
+  color: #374151;
+  border-bottom: 1px solid var(--border-light);
 }
 
-.table-header { font-weight: 600; color: var(--text-dark); text-transform: uppercase; font-size: 0.75rem; }
-.table-row:last-child { border-bottom: none; }
+.table-row:last-child {
+  border-bottom: none;
+}
 
 .student-info strong {
   color: var(--text-dark);
   font-weight: 600; 
 }
-
-.course-name {
-  color: var(--text-muted); 
-  font-weight: 500; 
-}
-
-
+.course-name { color: var(--text-muted); font-weight: 500; }
 .student-name { display: block; font-weight: 500; color: var(--text-dark); }
 .student-email { display: block; color: var(--text-muted); }
+
+/* --- Course Badge (optional) --- */
 .course-badge { padding: 0.25rem 0.75rem; border-radius: 99px; font-size: 0.75rem; font-weight: 500; }
 .course-badge.blue { background-color: #dbeafe; color: #2563eb; }
 .course-badge.yellow { background-color: #fef9c3; color: #a16207; }
 .course-badge.green { background-color: #dcfce7; color: #16a34a; }
 .course-badge.teal { background-color: #ccfbf1; color: #0d9488; }
 
-.progress-bar-container { width: 100%; height: 6px; background-color: #e5e7eb; border-radius: 99px; overflow: hidden; margin-bottom: 0.25rem;}
-.progress-bar-fill { height: 100%; border-radius: 99px; }
+/* --- Progress Bar --- */
+.progress-bar-container {
+  width: 70%; /* ✅ reduced from 100% */
+  height: 6px;
+  background-color: #e5e7eb;
+  border-radius: 99px;
+  overflow: hidden;
+  margin-bottom: 0.25rem;
+}
+.progress-bar-fill {
+  height: 100%;
+  background-color: #3b82f6;
+  border-radius: 99px;
+}
 .progress-bar-fill.green { background-color: #22c55e; }
 .progress-bar-fill.yellow { background-color: #f59e0b; }
 .progress-bar-fill.teal { background-color: #14b8a6; }
 .progress-bar-fill.red { background-color: #ef4444; }
-
 .progress-text { font-size: 0.8rem; color: var(--text-muted); }
-.perf-badge { display: block; padding: 0.2rem 0.6rem; border-radius: 6px; font-weight: 500; text-align: center; margin-bottom: 0.25rem; font-size: 0.75rem;}
-.perf-badge.excellent { background-color: #dcfce7; color: #16a34a; }
-.perf-badge.good { background-color: #fef9c3; color: #a16207; }
-.perf-badge.needs-help { background-color: #fee2e2; color: #b91c1c; }
-.perf-score { font-size: 0.8rem; color: var(--text-muted); text-align: center; }
-.action-buttons { display: flex; gap: 0.5rem; }
-.action-buttons button { padding: 0.5rem; border-radius: 6px; border: 1px solid var(--border-light); background: white; cursor: pointer; color: var(--text-muted); }
-.action-buttons button:hover { background-color: var(--bg-light); color: var(--text-dark); }
 
+/* --- Last Activity --- */
+.last-activity { color: var(--text-dark); font-size: 0.875rem; }
+
+/* --- Enrollment Status --- */
+.enrollment-status {
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  display: inline-block;
+  text-align: center;
+}
+.enrollment-status.enrolled {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.enrollment-status.completed {
+  background: #dbeafe;
+  color: #2563eb;
+}
+
+.enrollment-status.pending {
+  background: #fef9c3;
+  color: #a16207;
+}
+/* --- Action Buttons --- */
+.action-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.action-buttons .btn-edit {
+  background: #2563eb;
+  color: #fff;
+  padding: 5px 12px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  border: none;
+  cursor: pointer;
+}
+
+.action-buttons .btn-delete {
+  background: #dc2626;
+  color: #fff;
+  padding: 5px 12px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  border: none;
+  cursor: pointer;
+}
+
+/* --- Hover Effects --- */
+.action-buttons .btn-edit:hover {
+  background: #1d4ed8;
+}
+
+.action-buttons .btn-delete:hover {
+  background: #b91c1c;
+}
+
+/* --- Table Footer & Pagination --- */
 .table-footer {
   display: flex;
   justify-content: space-between;
@@ -277,41 +341,16 @@
   margin-top: 1.5rem;
   padding-top: 1.5rem;
   border-top: 1px solid var(--border-light);
-  font-size: 0.875rem; color: var(--text-muted);
+  font-size: 0.875rem; 
+  color: var(--text-muted);
 }
-
-.placeholder-row {
-  display: flex;
-}
-
-.placeholder-cell {
-  flex: 1;
-  text-align: center;
-  padding: 3rem 1rem;
-  color: #718096;
-  font-size: 0.95rem;
-  font-weight: 500;
-}
-
-.progress-bar-container {
-  background-color: #e5e7eb;
-  height: 8px;
-  border-radius: 8px;
-  width: 100%;
-}
-
-.progress-bar-fill.green { background-color: #34d399; }
-.progress-bar-fill.yellow { background-color: #f59e0b; }
-.progress-bar-fill.teal { background-color: #22d3ee; }
-.progress-bar-fill.red { background-color: #f87171; }
 
 .pagination {
   display: flex;
   gap: 0.5rem;
   margin-top: 1rem;
-  justify-content: flex-end; /* aligns to the right */
+  justify-content: flex-end;
 }
-
 .page-link {
   display: inline-flex;
   align-items: center;
@@ -326,21 +365,14 @@
   cursor: pointer;
   transition: all 0.2s;
 }
-
 .page-link:hover:not(.disabled) {
   background-color: var(--bg-light);
   border-color: var(--primary-blue);
   color: var(--primary-blue);
 }
-
-.page-link.disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
+.page-link.disabled { opacity: 0.5; cursor: not-allowed; }
 .page-link.active {
   background-color: var(--primary-blue);
   color: white;
   border-color: var(--primary-blue);
 }
-

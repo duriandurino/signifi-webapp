@@ -108,17 +108,20 @@ const InstitutionDashboardPage = () => {
 
           {/* Notifications / Announcements */}
           <div className="content-card bordered">
-            <h3>Announcements</h3>
-            <div className="announcements-list">
-              {announcements.map((a, index) => (
-                <div key={index} className="announcement-item">
-                  <h4>{a.title}</h4>
-                  <p>{a.message}</p>
-                  <span className="announcement-time">{timeAgo(a.date)}</span>
-                </div>
-              ))}
-            </div>
+          <h3>
+            Announcements <span className="announcement-emoji">🚀</span>
+          </h3>
+
+          <div className="announcements-list">
+            {announcements.map((a, index) => (
+              <div key={index} className="announcement-item">
+                <h4>{a.title}</h4>
+                <p>{a.message}</p>
+                <span className="announcement-time">{timeAgo(a.date)}</span>
+              </div>
+            ))}
           </div>
+        </div>
         </section>
       </div>
     </>

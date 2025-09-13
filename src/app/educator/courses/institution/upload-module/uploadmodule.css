@@ -1,0 +1,221 @@
+:root {
+  --main-bg: #f5f5f5;
+  --card-bg: #ffffff;
+  --text-primary: #2d3748;
+  --text-secondary: #718096;
+  --border-color: #e2e8f0;
+  --btn-publish: #1C69A8;
+  --btn-draft: #36BBA7;
+  --btn-danger: #dc2626;
+  --btn-add: #3b82f6;
+  --border-light: #D4D4D8;    /* Light border for cards */
+
+}
+
+/* Body */
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--main-bg);
+  color: var(--text-primary);
+  margin: 0;
+}
+
+/* Page Header */
+.page-header {
+  margin: 1.5rem 0;
+  margin-left: 10px;
+}
+.page-header h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 0 0 0.3rem 0;
+}
+.page-header p {
+  color: var(--text-secondary);
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+/* Card */
+.card {
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05),
+              0 2px 4px -1px rgba(0,0,0,0.03);
+  margin-bottom: 1.5rem;
+}
+
+/* Labels */
+.input-label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: var(--text-secondary);
+}
+
+/* Input & Textarea */
+.input-field,
+.textarea-field {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  font-size: 0.95rem;
+  outline: none;
+}
+
+/* Lesson Card */
+.lesson-card {
+  background-color: #f9fafb;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.lessons-section h3{
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 15px;
+  margin-left: 5px;
+  
+}
+
+/* Lesson Header */
+.lesson-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+/* Container for book icon + lesson title */
+.lesson-title-with-icon {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.lesson-title-with-icon h4 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+/* Trash/Delete button */
+.btn-trash {
+  background-color: var(--btn-danger);
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  border: none;
+  cursor: pointer;
+}
+
+/* Buttons */
+.btn {
+  padding: 0.65rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: .9rem;
+  cursor: pointer;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.btn-draft {
+  background-color: var(--btn-draft);
+  color: white;
+}
+.btn-publish {
+  background-color: var(--btn-publish);
+  color: white;
+}
+.btn.add-btn {
+  background-color: white;
+  border: 1px solid var(--border-light); 
+  color: var(--text-dark);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+/* File Upload / Upload Box */
+.file-upload, .upload-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed var(--border-color);
+  border-radius: 10px;
+  padding: 1.2rem;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  background-color: #fafafa;
+  transition: all 0.2s ease-in-out;
+  margin-bottom: 1rem;
+}
+.file-upload label,
+.upload-box label {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+.upload-box p {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+.upload-box input[type="file"],
+.file-upload input[type="file"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+.upload-box:hover, .file-upload:hover {
+  background-color: #f0f4f8;
+  border-color: #3b82f6;
+}
+
+/* Side by Side for Quiz & Practice Drill */
+.side-by-side {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+.flex-item {
+  flex: 1;
+  min-width: 200px;
+}
+
+/* Button Group Right */
+.btn-group {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+  justify-content: flex-end;
+}
+
+/* Responsive */
+@media(max-width: 768px){
+  .side-by-side {
+    flex-direction: column;
+  }
+}

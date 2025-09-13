@@ -1,4 +1,3 @@
-// app/educator/dashboard/page.tsx
 "use client";
 
 import { useEffect } from "react";
@@ -14,6 +13,9 @@ export default function DashboardRedirect() {
       router.replace("/educator/dashboard/institution");
     } else if (user?.role === "freelance") {
       router.replace("/educator/dashboard/freelance");
+    } else {
+      // 🚨 TEMPORARY: default to institution dashboard
+      router.replace("/educator/dashboard/institution");
     }
   }, [user, router]);
 

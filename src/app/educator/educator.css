@@ -1,11 +1,11 @@
 :root {
-  --educator-sidebar-bg: #ffffff; /* changed from dark to white */
+  --educator-sidebar-bg: #081825; /* changed from dark to white */
   --educator-main-bg: #f3f4f6;
-  --educator-text-light: #6b7280; /* soft dark text */
-  --educator-text-dark: #404040;  /* main dark text */
+  --educator-text-light: #f3f4f6; /* soft dark text */
+  --educator-text-dark: #f3f4f6;  /* main dark text */
   --educator-card-bg: #ffffff;
   --educator-border-color: #e5e7eb;
-  --educator-accent-blue: #1447E6;
+  --educator-accent-blue: #2984D1;
 }
 
 body {
@@ -44,7 +44,7 @@ body {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
   margin-left: 10px;
 }
 
@@ -52,7 +52,7 @@ body {
   font-size: 1.2rem;
   font-weight: 600;
   margin: 0;
-  color: var(--educator-text-dark);
+  color: #c1e1f6;
 }
 
 /* Sidebar Navigation */
@@ -70,11 +70,11 @@ body {
   width: 100%;
   display: flex;
   align-items: center;
-  gap: 0.85rem;
+  gap: 1.2rem;
   padding: 0.6rem .5rem;
   border-radius: 6px;
   text-decoration: none;
-  font-size: .94rem;
+  font-size: 1rem;
   font-weight: 500;
   color: var(--educator-text-dark);
   transition: all 0.2s ease-in-out;
@@ -88,12 +88,12 @@ body {
 }
 
 .educator-sidebar-nav li.active a {
-  background-color: #f3f4f6; /* slightly darker than white for active */
-  color: var(--educator-accent-blue);
+  background-color: #293952; /* slightly darker than white for active */
+  color: white;
 }
 
 .nav-icon {
-  color: var(--educator-text-dark);
+  color: var(--educator-accent-blue);
 }
 
 .logout-button {

@@ -108,7 +108,7 @@ body {
   color: var(--text-dark);
 }
 .role-card:hover {
-  border-color: #a0aec0; /* A slightly darker border on hover */
+  border-color: #a0aec0; 
   transform: translateY(-5px);
 }
 .role-card.selected {
