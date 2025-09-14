@@ -51,7 +51,7 @@ const Sidebar = () => {
                     <li key={item.name} className={pathname === item.href ? "active" : ""}>
                       {/* 3. Use the dynamic item.href for the Link */}
                       <Link href={item.href}>
-                        <item.icon size={22} className="nav-icon" /> 
+                        <item.icon size={20} className="nav-icon" /> 
                         <span>{item.name}</span>
                       </Link>
                     </li>

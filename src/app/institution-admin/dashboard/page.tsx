@@ -1,93 +1,113 @@
 "use client";
 
 import React from 'react';
-import { Users, UserCheck, AlertTriangle } from 'lucide-react';
+import { Users, UserCheck, AlertTriangle, Bell, ChevronDown } from 'lucide-react';
+import Image from 'next/image';
 import './dashboard.css';
 
 const AdminDashboardPage = () => {
-  // Empty state: no stats yet
+  // Mock statistics
   const statsData = [
-    { label: "Active Students", value: 0, trend: null, icon: Users, colorClass: "icon-blue" },
-    { label: "Verified Educators", value: 0, trend: null, icon: UserCheck, colorClass: "icon-green" },
-    { label: "Suspended Accounts", value: 0, trend: null, icon: AlertTriangle, colorClass: "icon-red" },
+    { label: "Active Students", value: 1280, trend: 12, icon: Users, colorClass: "icon-blue" },
+    { label: "Verified Educators", value: 56, trend: 3, icon: UserCheck, colorClass: "icon-green" },
+    { label: "Suspended Accounts", value: 8, trend: -2, icon: AlertTriangle, colorClass: "icon-red" },
   ];
 
-  const activityLogData: any[] = []; // Empty array for no activity yet
+  // Mock activity log
+  const activityLogData = [
+    { time: "10:32 AM", action: "Login", user: "John Doe", details: "Logged into system" },
+    { time: "09:58 AM", action: "Verified Educator", user: "Admin User", details: "Approved educator profile: Maria Santos" },
+    { time: "Yesterday", action: "Account Suspended", user: "System", details: "Suspended account: user123" },
+    { time: "2 days ago", action: "Student Registered", user: "Jane Smith", details: "New student account created" },
+  ];
 
   return (
     <div className="dashboard-content">
       {/* Page Header */}
-      <header className="dashboard-header">
-        <h1>Institution Dashboard</h1>
-        <div className="admin-user-profile">
-          <div className="user-text">
-            <span className="user-name">Admin User</span>
-            <span className="user-role">Institution Administrator</span>
-          </div>
-          <div className="user-avatar">
-            <span>AD</span>
+      <div className="page-top-header">
+        <div className="header-text">
+          <h1>Welcome, Admin</h1>
+          <p className="header-subtext">Check your progress here</p>
+        </div>
+        <div className="top-header-actions">
+          <button className="icon-button notification-button">
+            <Bell size={22} />
+          </button>
+          <div className="header-profile">
+            <div className="header-avatar-wrapper">
+              <Image src="/profile.jpg" alt="User Avatar" width={40} height={40} className="header-avatar" />
+            </div>
+            <div className="header-user-info">
+              <span className="user-name">Admin User</span>
+              <span className="user-email">Institution Admin</span>
+            </div>
+            <ChevronDown size={20} className="chevron-icon" />
           </div>
         </div>
-      </header>
+      </div>
 
       {/* Statistics Cards Grid */}
-      <div className="stats-grid">
-        {statsData.map((stat, idx) => {
-          const Icon = stat.icon;
-          return (
-            <div className="stat-card" key={idx}>
-              <div className={`stat-icon ${stat.colorClass}`}>
-                <Icon size={20} color="white" />
+      <div className="card-box">
+        <div className="stats-grid">
+          {statsData.map((stat, idx) => {
+            const Icon = stat.icon;
+            return (
+              <div className="stat-card" key={idx}>
+                <div className={`stat-icon ${stat.colorClass}`}>
+                  <Icon size={20} color="white" />
+                </div>
+                <div className="stat-content">
+                  <p className="stat-value">{stat.value}</p>
+                  <p className="stat-label">{stat.label}</p>
+                  {stat.trend ? (
+                    <p className={`stat-trend ${stat.trend > 0 ? "trend-positive" : "trend-negative"}`}>
+                      {stat.trend > 0 ? "↑" : "↓"} {Math.abs(stat.trend)} this week
+                    </p>
+                  ) : (
+                    <p className="stat-trend empty-trend">Waiting for data</p>
+                  )}
+                </div>
               </div>
-              <div className="stat-content">
-                <p className="stat-value">{stat.value}</p>
-                <p className="stat-label">{stat.label}</p>
-                {stat.trend ? (
-                  <p className={`stat-trend ${stat.trend > 0 ? "trend-positive" : "trend-negative"}`}>
-                    {stat.trend > 0 ? "↑" : "↓"} {stat.trend} this week
-                  </p>
-                ) : (
-                  <p className="stat-trend empty-trend">Waiting for data</p>
-                )}
-              </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
 
       {/* Recent Activity Log Section */}
-      <section className="activity-log-section">
-        <h2>Recent Activity Log</h2>
-        {activityLogData.length === 0 ? (
-          <div className="empty-activity-placeholder">
-            <p>No recent activity yet</p>
-            <small>All actions will appear here once users interact with the system.</small>
-          </div>
-        ) : (
-          <div className="activity-log-card">
-            <table className="activity-table">
-              <thead>
-                <tr>
-                  <th>TIME</th>
-                  <th>ACTION</th>
-                  <th>USER</th>
-                  <th>DETAILS</th>
-                </tr>
-              </thead>
-              <tbody>
-                {activityLogData.map((log, index) => (
-                  <tr key={index}>
-                    <td>{log.time}</td>
-                    <td>{log.action}</td>
-                    <td>{log.user}</td>
-                    <td>{log.details}</td>
+      <div className="card-box">
+        <section className="activity-log-section">
+          <h2>Recent Activity Log</h2>
+          {activityLogData.length === 0 ? (
+            <div className="empty-activity-placeholder">
+              <p>No recent activity yet</p>
+              <small>All actions will appear here once users interact with the system.</small>
+            </div>
+          ) : (
+            <div className="activity-log-card">
+              <table className="activity-table">
+                <thead>
+                  <tr>
+                    <th>TIME</th>
+                    <th>ACTION</th>
+                    <th>USER</th>
+                    <th>DETAILS</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        )}
-      </section>
+                </thead>
+                <tbody>
+                  {activityLogData.map((log, index) => (
+                    <tr key={index}>
+                      <td>{log.time}</td>
+                      <td>{log.action}</td>
+                      <td>{log.user}</td>
+                      <td>{log.details}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+        </section>
+      </div>
     </div>
   );
 };
