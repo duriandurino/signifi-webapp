@@ -83,13 +83,13 @@
         <div className="table-wrapper">
           <div className="table-toolbar">
             <div className="toolbar-actions">
-              <button className="btn btn-secondary">
+              <button className="userbtn btn-exportbulk">
                 <Download size={14} /> Export Users
               </button>
-              <button className="btn btn-secondary">
+              <button className="userbtn btn-exportbulk">
                 <Mail size={14} /> Bulk Email
               </button>
-              <button className="btn btn-primary">
+              <button className="userbtn btn-primary">
                 <UserPlus size={14} /> Add User
               </button>
             </div>
@@ -98,7 +98,7 @@
                 <Search size={18} className="search-icon" />
                 <input
                   type="text"
-                  placeholder="Search users by name"
+                  placeholder="Search users by name or email"
                 />
               </div>
               <select>
@@ -156,7 +156,7 @@
                     <td>{user.email}</td>
                     <td>
                       <span
-                        className={`pill type-${user.type
+                        className={`um-pill type-${user.type
                           .toLowerCase()
                           .replace(" ", "-")}`}
                       >
@@ -165,7 +165,7 @@
                     </td>
                     <td>
                       <span
-                        className={`pill status-${user.status
+                        className={`um-pill status-${user.status
                           .toLowerCase()
                           .replace(" ", "-")}`}
                       >
@@ -181,16 +181,16 @@
           )}
 
           {/* Table Pagination */}
-          <div className="table-pagination">
+          <div className="table-um-pagination">
             <span>Showing {usersData.length} of {usersData.length}</span>
             <div className="pagination-controls">
-              <button className="btn-page">
+              <button className="btn-umpage">
                 Previous
               </button>
-              <button className="btn-page active">
+              <button className="btn-umpage active">
                 1
               </button>
-              <button className="btn-page">
+              <button className="btn-umpage">
                 Next
               </button>
             </div>

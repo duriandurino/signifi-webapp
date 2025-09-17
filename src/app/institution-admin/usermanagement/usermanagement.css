@@ -1,22 +1,35 @@
 :root {
   --card-bg: #252628;
   --card-border: #383A3E;
-  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.07);
+  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07),
+                 0 2px 4px -2px rgba(0, 0, 0, 0.07);
   --text-primary: #ced1d3;
   --text-secondary: #8F8F90;
-  --primary-blue: #3B82F6;
+  --um-blue: #3B82F6;
   --secondary-gray: #6B7280;
   --light-gray-border: #E5E7EB;
   --light-gray-bg: #F9FAFB;
   --text-dark: #1F2937;
   --text-light: #4B5563;
-  
-  /* Pill Colors */
-  --pillblue-bg: #DBEAFE; --blue-text: #2563EB;
-  --pillgreen-bg: #D1FAE5; --green-text: #059669;
-  --pillyellow-bg: #FEF3C7; --yellow-text: #D97706;
-  --pillred-bg: #FEE2E2; --red-text: #DC2626;
-  --pillpurple-bg: #E0E7FF; --purple-text: #4F46E5;
+
+  --pillblue-bg: #DBEAFE;
+  --blue-text: #2563EB;
+  --pillgreen-bg: #D1FAE5;
+  --green-text: #059669;
+  --pillyellow-bg: #FEF3C7;
+  --yellow-text: #D97706;
+  --pillred-bg: #FEE2E2;
+  --red-text: #DC2626;
+  --pillpurple-bg: #E0E7FF;
+  --purple-text: #4F46E5;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont,
+               'Segoe UI', Roboto, sans-serif;
+  margin: 0;
+  background-color: var(--main-bg);
+  color: var(--text-primary);
 }
 
 .main-content {
@@ -24,40 +37,34 @@
   padding: 1.5rem;
 }
 
-body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  margin: 0;
-  background-color: var(--main-bg);
-  color: var(--text-primary);
+.page-top-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: .5rem;
+  margin-bottom: 1.5rem;
 }
-/* --- Top Header --- */
-  .page-top-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: .5rem;
-    margin-bottom: 1.5rem;
-  }
-  .page-top-header h1 {
-    font-size: 1.3rem; 
-    font-weight: 650;
-    color: var(--text-primary);
-    margin: 0;
-    margin-left: 10px;
-  }
-  .top-header-actions {
-    display: flex;
-    align-items: center;
-    gap: .5rem;
-  }
-  .icon-button {
-   
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-primary);
-    cursor: pointer;
-  }
+
+.page-top-header h1 {
+  font-size: 1.3rem;
+  font-weight: 650;
+  color: var(--text-primary);
+  margin: 0 0 0 10px;
+}
+
+.top-header-actions {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+.icon-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary);
+  cursor: pointer;
+}
 
 .header-text {
   display: flex;
@@ -66,32 +73,30 @@ body {
 
 .header-subtext {
   font-size: 0.9rem;
-  color: var(--text-primary)!important;
-  margin: 0; 
+  color: var(--text-primary) !important;
+  margin: 5px 0 0 10px !important;
   font-weight: 400;
-  margin-top: 5px;
-  margin-left: 10px !important;
 }
 
 .header-profile {
   display: flex;
-  align-items: center;  /* Vertically aligns the avatar, text, and chevron */
-  gap: 0.75rem;         /* The space between the elements */
-  padding: 0.5rem;      /* Adds some space inside the clickable area */
-  border-radius: 8px;   /* Gives it rounded corners */
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem;
+  border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.2s;
-  min-width: 220px;     /* Gives the component a nice minimum width */
+  min-width: 220px;
 }
 
-/* The circular container for the avatar image */
 .header-avatar-wrapper {
   width: 40px;
   height: 40px;
   border-radius: 50%;
   overflow: hidden;
-  flex-shrink: 0; /* Prevents the avatar from shrinking if space is tight */
+  flex-shrink: 0;
 }
+
 .header-avatar {
   width: 100%;
   height: 100%;
@@ -101,43 +106,39 @@ body {
 .header-user-info {
   display: flex;
   flex-direction: column;
-  
-  flex-grow: 1; 
+  flex-grow: 1;
 }
 
 .user-name {
   font-size: 0.9rem;
   font-weight: 600;
-  color: var(--text-primary) !important; 
+  color: var(--text-primary) !important;
 }
 
-/* The user's email address */
 .user-email {
   font-size: 0.8rem;
-  color: var(--text-primary); /* Make sure you have this variable in your root */
+  color: var(--text-primary);
 }
 
 .chevron-icon {
   color: var(--text-primary);
-  flex-shrink: 0; /* Prevents the icon from shrinking */
+  flex-shrink: 0;
 }
 
-
 .table-wrapper {
-  background-color: var(--card-bg) ; 
+  background-color: var(--card-bg);
   border: 1px solid var(--card-border);
   border-radius: 12px;
-  box-shadow:var(--card-shadow);
+  box-shadow: var(--card-shadow);
   padding: 1.5rem;
 }
 
-/* Toolbar */
 .table-toolbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1.5rem;
-  flex-wrap: wrap; /* Allows filters to wrap on smaller screens */
+  flex-wrap: wrap;
   gap: 1rem;
 }
 
@@ -146,78 +147,126 @@ body {
   background-color: var(--card-bg);
   color: var(--text-primary);
 }
-.toolbar-actions, .toolbar-filters {
+
+.toolbar-actions,
+.toolbar-filters {
   display: flex;
   align-items: center;
   gap: 0.75rem;
 }
-.btn {
+
+.userbtn {
   padding: 0.5rem 1rem;
   border-radius: 6px;
   font-weight: 500;
   font-size: 0.8rem;
-  border: 1px solid transparent;
-  cursor: pointer;
+  border-width: 1px;
+  border-style: solid;
+  border-color: transparent;  cursor: pointer;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   transition: background-color 0.2s;
 }
-.btn-primary { background-color: var(--primary-blue); color: white; border-color: var(--primary-blue); }
-.btn-primary:hover { background-color: #2563EB; }
-.btn-secondary {
+
+.btn-primary {
+  background-color: var(--um-blue);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #2563EB;
+}
+
+.btn-exportbulk {
   background-color: var(--card-bg);
   color: var(--text-primary);
   border-color: var(--card-border);
 }
 
-.btn-secondary:hover { background-color: var(--light-gray-bg); }
-.search-wrapper { position: relative; }
+.btn-exportbulk:hover {
+  background-color: var(--card-border);
+}
+
+.search-wrapper {
+  position: relative;
+}
+
+.search-wrapper input{
+  width: 230px;
+}
 .search-wrapper input::placeholder {
   color: var(--text-primary);
-  font-size: 0.8rem;          
+  font-size: 0.8rem;
 }
-.search-icon { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: var(te); }
-.toolbar-filters input, .toolbar-filters select {
+
+.search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.toolbar-filters input,
+.toolbar-filters select {
   padding: 0.5rem 0.75rem;
-  border: 1px solid var(--light-gray-border);
+  border: 1px solid var(--card-border);
   border-radius: 6px;
   font-size: 0.8rem;
 }
-.toolbar-filters input { padding-left: 2.25rem; }
 
-/* Table */
-.users-table { 
-  width: 100%; 
-  border-collapse: collapse; 
+.toolbar-filters input {
+  padding-left: 2.25rem;
+}
+
+.users-table {
+  width: 100%;
+  border-collapse: collapse;
   margin-top: 2rem;
 }
 
-.users-table th, .users-table td {
+.users-table th,
+.users-table td {
   padding: 1rem;
   text-align: left;
   border-bottom: 1px solid var(--card-border);
   vertical-align: middle;
 }
+
 .users-table thead th {
   font-size: 0.8rem;
   font-weight: 600;
   color: white;
-  text-transform: none;
   background-color: #37383A;
 }
 
 .users-table td {
   font-size: 0.85rem;
 }
-.users-table thead th:first-child, .users-table tbody td:first-child { text-align: center; }
-.users-table tbody tr:last-child td { border-bottom: none; }
-.users-table input[type="checkbox"] { width: 16px; height: 16px; }
 
-/* User Info Cell */
-.user-info { display: flex; align-items: center; gap: 1rem; }
+.users-table thead th:first-child,
+.users-table tbody td:first-child {
+  text-align: center;
+}
+
+.users-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.users-table input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
 .user-avatar {
-  width: 40px; height: 40px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   background-color: #D1D5DB;
   color: var(--text-dark);
@@ -227,26 +276,58 @@ body {
   justify-content: center;
   flex-shrink: 0;
 }
-.user-name { display: block; font-weight: 500; color: var(--text-primary); }
-.user-id { display: block; font-size: 0.8rem; color: var(--text-secondary); }
 
-/* Pills / Badges */
-.pill {
+.user-name {
+  display: block;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.user-id {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.um-pill {
   padding: 0.25rem 0.75rem;
-  border-radius: 9999px;
+  border-radius: 50px;
   font-size: 0.7rem;
   font-weight: 500;
   text-transform: uppercase;
 }
-.type-educator { background-color: var(--pillblue-bg); color: var(--blue-text); }
-.type-student { background-color: var(--pillpurple-bg); color: var(--purple-text); }
-.type-pending { background-color: var(--pillyellow-bg); color: var(--yellow-text); }
-.status-active { background-color: var(--pillgreen-bg); color: var(--green-text); }
-.status-under-review { background-color: var(--pillyellow-bg); color: var(--yellow-text); }
-.status-suspended { background-color: var(--pillred-bg); color: var(--red-text); }
 
-/* Pagination */
-.table-pagination {
+.type-educator {
+  background-color: #2a3b50;
+  color: #a4bcd5;
+}
+
+.type-student {
+  background-color: #a4bcd5;
+  color: #1e2939;
+}
+
+.status-pending {
+  background-color: #FFA2A2;
+  color: #C11007;
+}
+
+.status-active {
+  background-color: #0F3928;
+  color: #2BA675;
+}
+
+.status-under-review {
+  background-color: var(--pillyellow-bg);
+  color: var(--yellow-text);
+}
+
+.status-suspended {
+  background-color: #7f1d1d;
+  color: #fca5a5;
+}
+
+.table-um-pagination {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -254,14 +335,21 @@ body {
   font-size: 0.875rem;
   color: var(--text-primary);
 }
-.pagination-controls { display: flex; align-items: center; gap: 0.25rem; }
-.btn-page {
+
+.pagination-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.btn-umpage {
   padding: 0.5rem 0.75rem;
   background-color: var(--card-border);
   border-radius: 6px;
   cursor: pointer;
 }
-.btn-page.active {
+
+.btn-umpage.active {
   background-color: var(--card-border);
   color: white;
 }

@@ -1,0 +1,265 @@
+:root {
+  --card-bg: #252628;
+  --card-border: #383A3E;
+  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07),
+                 0 2px 4px -2px rgba(0, 0, 0, 0.07);
+  --card-hover: #383a3e;
+
+  --text-primary: #ced1d3;
+  --text-secondary: #8F8F90;
+  --text-dark: #1F2937;
+  --text-light: #4B5563;
+
+  --primary-blue: #3B82F6;
+  --status-progress-bg: #E0F2FE;
+  --status-progress-text: #0284C7;
+  --status-completed-bg: #D1FAE5;
+  --status-completed-text: #059669;
+  --shadow-color: rgba(0, 0, 0, 0.05);
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont,
+               'Segoe UI', Roboto, sans-serif;
+  margin: 0;
+  background-color: var(--main-bg);
+  color: var(--text-primary);
+}
+
+.page-top-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.5rem 0 1.5rem;
+}
+
+.page-top-header h1 {
+  font-size: 1.3rem;
+  font-weight: 650;
+  color: var(--text-primary);
+  margin: 0 0 0 10px;
+}
+
+.header-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.header-subtext {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--text-primary) !important;
+  margin: 5px 0 0 10px !important;
+}
+
+.top-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.icon-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+.header-profile {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem;
+  min-width: 220px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.header-avatar-wrapper {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.header-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.header-user-info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.user-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary) !important;
+}
+
+.user-email {
+  font-size: 0.8rem;
+  color: var(--text-primary);
+}
+
+.chevron-icon {
+  color: var(--text-primary);
+  flex-shrink: 0;
+}
+
+
+/* --- Main Content Cards --- */
+.content-card {
+  background-color: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px var(--shadow-color);
+  margin-bottom: 2rem; /* Space between the two cards */
+}
+.card-header-info {
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.card-header-info h2 { font-size: 1.5rem; margin: 0 0 0.5rem 0; }
+.card-header-info p { color: var(--text-light); margin: 0; }
+
+.studenttable-wrapper {
+  background-color: var(--card-bg);
+}
+
+/* --- Table Toolbar --- */
+.table-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+}
+.table-toolbar h3 { font-size: 1.25rem; margin: 0; font-weight: 500; }
+.toolbar-actions { display: flex; align-items: center; gap: 1rem; }
+.studentsearch-bar { position: relative; }
+.search-icon { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--text-primary); }
+.studentsearch-bar input {
+   padding: 0.6rem .5rem 0.6rem 2.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--card-border);
+  font-size: 0.8rem;
+  color: var(--text-primary);
+  min-width: 250px;
+}
+.studentfilter-select {
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--card-border);
+  font-size: 0.8rem;
+  background-color: var(--card-border);
+}
+
+/* ============================
+   Student Progress Page Styles
+   ============================ */
+
+/* General Table Wrapper */
+.progress-table,
+.feedback-table {
+  width: 100%;
+  margin-top: 1rem;
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  overflow: hidden;
+  font-size: 0.85rem;
+}
+
+/* Header + Row Shared Layout */
+.progress-table .studenttable-header,
+.progress-table .studenttable-row,
+.feedback-table .studenttable-header,
+.feedback-table .studenttable-row {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr); /* Default: 6 equal columns */
+  gap: 2rem;
+  align-items: center;
+  padding: .5rem 1rem;
+}
+
+/* Table Header */
+.studenttable-header {
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  background-color: var(--card-border);
+}
+
+/* Table Rows */
+.studenttable-row {
+  font-size: 0.85rem;
+  transition: background 0.2s ease;
+}
+
+.studenttable-row:hover {
+  background-color: var(--hover-bg, var(--card-hover));
+}
+
+.studenttable-row:last-child {
+  border-bottom: none;
+}
+
+/* Feedback Table - Adjust Column Widths */
+.feedback-table .studenttable-header,
+.feedback-table .studenttable-row {
+  grid-template-columns: 1fr 1fr 0.5fr 2fr 1fr 1fr;
+}
+
+/* Cells */
+.studenttable-row > div,
+.studenttable-header > div {
+  padding: 0.5rem 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Status Badges */
+.status-badge {
+  display: inline-block;
+  padding: 0.25rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.status-badge.in-progress {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.status-badge.completed {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+/* Buttons inside table */
+.btn-table {
+  padding: 0.35rem 0.9rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  background-color: var(--primary-blue);
+  color: #fff;
+}
+
+.btn-table:hover {
+  background-color: var(--primary-blue-hover, #2563eb);
+}
+
+.rating-cell { display: flex; align-items: center; gap: 0.25rem; }
+.star-icon { color: #FBBF24; }

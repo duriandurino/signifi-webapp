@@ -23,9 +23,14 @@ const navGroups = [
             { name: 'User Management', href: '/institution-admin/usermanagement', icon: Users },
             { name: 'Education Verification', href: '/institution-admin/educationverification', icon: GraduationCap },
             { name: 'Educator Applications', href: '/institution-admin/educatorapplication', icon: FileText },
-            { name: 'Learner Accounts', href: '/institution-admin/learner-accounts', icon: UserCheck },
-            { name: 'Educator Status', href: '/institution-admin/educator-status', icon: Star },
-            { name: 'Institution Access', href: '/institution-admin/institution-access', icon: Building },
+            { name: 'Learner Accounts', href: '/institution-admin/learneraccounts', icon: UserCheck },
+            { name: 'Educator Status', href: '/institution-admin/educatorstatus', icon: Star },
+        ],
+    },
+    {
+    title: 'ANALYTICS & FEEDBACK',
+        items: [
+            { name: 'Student Progress', href: '/institution-admin/studentprogress', icon: Building },
         ],
     },
 ];
