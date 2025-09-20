@@ -1,10 +1,11 @@
 :root {
-  /* Global color palette for the entire app */
   --sidebar-bg: #FFFFFF;
   --main-bg: #F9FAFB;
-  --card-bg: #FFFFFF;
-  --text-primary: #1F2937;
-  --text-secondary: #6B7280;
+  --card-bg: #252628;
+  --card-border: #383A3E;
+  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.07);
+  --text-primary: #ced1d3;
+  --text-secondary: #718096;
   --border-color: #E5E7EB;
   --accent-blue: #3B82F6;
   --primary-green: #84cc16;
@@ -13,54 +14,109 @@
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   margin: 0;
-  background-color: var(--main-bg);
+  background-color: var(--admin-main-bg);
   color: var(--text-primary);
 }
 
-.admin-header { 
-  display: flex; 
-  justify-content: space-between; 
-  align-items: center; 
-  margin-bottom: 2rem; 
+.main-content {
+  flex: 1;
+  padding: 1.5rem;
 }
 
-.admin-header h2 { 
+ /* --- Top Header --- */
+  .page-top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: .5rem;
+    margin-bottom: 1.5rem;
+  }
+  .page-top-header h1 {
+    font-size: 1.3rem; 
+    font-weight: 650;
+    color: var(--text-primary);
+    margin: 0;
+    margin-left: 10px;
+  }
+  .top-header-actions {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+  }
+  .icon-button {
+   
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-primary);
+    cursor: pointer;
+  }
+
+.header-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.header-subtext {
+  font-size: 0.9rem;
+  color: var(--text-primary)!important;
   margin: 0; 
-  font-size: 1.5rem; 
-  font-weight: 600; 
-  color: var(--admin-text-dark); 
+  font-weight: 400;
+  margin-top: 5px;
+  margin-left: 10px !important;
 }
 
-.admin-user-profile { 
-  display: flex; 
-  align-items: center; 
-  gap: 1rem; 
-  background: var(--admin-card-bg); 
-  padding: 0.5rem 1rem; 
-  border-radius: 99px; 
+.header-profile {
+  display: flex;
+  align-items: center;  /* Vertically aligns the avatar, text, and chevron */
+  gap: 0.75rem;         /* The space between the elements */
+  padding: 0.5rem;      /* Adds some space inside the clickable area */
+  border-radius: 8px;   /* Gives it rounded corners */
+  cursor: pointer;
+  transition: background-color 0.2s;
+  min-width: 220px;     /* Gives the component a nice minimum width */
 }
 
-.admin-avatar { 
-  width: 32px; 
-  height: 32px; 
-  border-radius: 50%; 
-  background: #e0e7ff; 
-  color: #4338ca; 
-  display: flex; 
-  align-items: center; 
-  justify-content: center; 
-  font-weight: 600; 
+/* The circular container for the avatar image */
+.header-avatar-wrapper {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0; /* Prevents the avatar from shrinking if space is tight */
+}
+.header-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.admin-user-info span { 
-  display: block; 
-  font-weight: 500; 
+/* The container for the name and email text */
+.header-user-info {
+  display: flex;
+  flex-direction: column;
+  
+  flex-grow: 1; 
 }
 
-.admin-user-info small { 
-  color: #6b7280; 
+/* The user's name */
+.user-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary) !important; 
 }
 
+/* The user's email address */
+.user-email {
+  font-size: 0.8rem;
+  color: var(--text-primary); /* Make sure you have this variable in your root */
+}
+
+/* The chevron icon on the far right */
+.chevron-icon {
+  color: var(--text-primary);
+  flex-shrink: 0; /* Prevents the icon from shrinking */
+}
 
 /* ===========================
    WELCOME BAR
@@ -68,14 +124,8 @@ body {
 .admin-welcome-bar { 
   background: var(--admin-card-bg); 
   border-radius: 12px; 
-  padding: 1.5rem; 
+  padding: 1rem; 
   margin-bottom: 2rem; 
-}
-
-.admin-welcome-text { 
-  display: flex; 
-  align-items: center; 
-  gap: 1rem; 
 }
 
 .admin-welcome-text h3 { 
@@ -87,7 +137,8 @@ body {
   align-items: center;
   gap: 1.5rem; 
   font-size: 0.875rem; 
-  color: #6b7280; 
+  color: var(--text-primary); 
+  margin-top: 0px;
 }
 
 .login-meta span { 
@@ -108,8 +159,9 @@ body {
 }
 
 .info-card-admin { 
-  background: var(--admin-card-bg); 
+  background: var(--card-bg); 
   border-radius: 12px; 
+  border: 1px solid var(--card-border);
   padding: 1.5rem; 
 }
 
@@ -142,12 +194,13 @@ body {
   display: flex; 
   align-items: center; 
   gap: 0.5rem;
-  padding: 0.6rem 1rem; 
+  padding: 0.5rem 1rem; 
   border: none; 
+  font-size: .85rem;
   border-radius: 6px; 
   cursor: pointer; 
-  background: #4b5563; 
-  color: white; 
+  background: var(--card-border); 
+  color:var(--text-primary); 
 }
 
 
@@ -163,7 +216,8 @@ body {
 .chart-card-admin { 
   display: flex; 
   flex-direction: column; 
-  background: var(--admin-card-bg); 
+  background: var(--card-bg); 
+  border: 1px solid var(--card-border);
   border-radius: 12px; 
   padding: 1.5rem; 
 }
