@@ -7,7 +7,7 @@ import { usePathname } from 'next/navigation';
 
 import { 
     LineChart, Users, GraduationCap, FileText, 
-    UserCheck, Star, Building, LogOut 
+    UserCheck, Star, Building, LogOut, Bell
 } from 'lucide-react';
 
 const navGroups = [
@@ -15,6 +15,7 @@ const navGroups = [
         title: 'OVERVIEW',
         items: [
             { name: 'Institution Dashboard', href: '/institution-admin/dashboard', icon: LineChart },
+            { name: 'Notifications', href: '/institution-admin/notifications', icon: Bell },
         ],
     },
     {

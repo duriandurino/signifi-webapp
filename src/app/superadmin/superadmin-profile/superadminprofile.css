@@ -58,7 +58,7 @@ body {
 }
 
 .sp-card-title {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 600;
   color: var(--text-primary);
   padding-bottom: 1rem;
@@ -97,10 +97,10 @@ body {
 .sp-btn-change-photo {
   background-color: #3b82f6;
   color: white;
-  padding: 0.5rem 1rem;
+  padding: 0.4rem 1rem;
   border-radius: 6px;
   border: none;
-  font-size: .8rem;
+  font-size: .7rem;
   font-weight: 500;
   display: inline-flex;
   align-items: center;

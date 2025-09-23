@@ -97,9 +97,7 @@ const CoursesPage = () => {
           <p className="header-subtext">Create, edit, and manage your FSL courses</p>
         </div>
         <div className="top-header-actions">
-          <button className="icon-button notification-button">
-            <Bell size={22} />
-          </button>
+
           <div className="header-profile">
             <div className="header-avatar-wrapper">
               <Image src="/profile.jpg" alt="User Avatar" width={40} height={40} className="header-avatar" />

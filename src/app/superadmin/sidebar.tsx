@@ -5,12 +5,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { 
-  LayoutDashboard, Users, University, UserCheck, Eye, Settings, LogOut
+  LayoutDashboard, Users, University, UserCheck, Eye, Settings, LogOut, Bell
 } from 'lucide-react';
 
 // Admin-specific navigation links
 const navLinks = [
   { href: "/superadmin/dashboard", icon: LayoutDashboard, label: "Dashboard" },
+  { href: "/superadmin/notifications", icon: Bell, label: "Notifications" },
   { href: "/superadmin/usermanagement", icon: Users, label: "User Management" },
   { href: "/superadmin/institutionverification", icon: University, label: "Institution Verification" },
   { href: "/superadmin/educatorverification", icon: UserCheck, label: "Educator Verification" },

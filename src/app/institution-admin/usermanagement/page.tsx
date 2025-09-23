@@ -57,9 +57,7 @@
             <p className="header-subtext">Manage Educators and Learners users</p>
           </div>
           <div className="top-header-actions">
-            <button className="icon-button notification-button">
-              <Bell size={22} />
-            </button>
+        
             <div className="header-profile">
               <div className="header-avatar-wrapper">
                 <Image

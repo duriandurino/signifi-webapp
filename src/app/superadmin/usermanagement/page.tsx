@@ -34,9 +34,7 @@ const UserManagementPage = () => {
           <h1>User Management</h1>
         </div>
         <div className="top-header-actions">
-          <button className="icon-button notification-button">
-            <Bell size={22} />
-          </button>
+        
           <div className="header-profile">
             <div className="header-avatar-wrapper">
               <Image

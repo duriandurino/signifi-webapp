@@ -41,9 +41,6 @@ const EducatorApplicationsPage = () => {
             <p className="header-subtext">Review and process new applications from prospective educators</p>
           </div>
           <div className="header-actions">
-            <button className="icon-button notification-button">
-              <Bell size={22} />
-            </button>
             <div className="header-profile">
               <div className="header-avatar-wrapper">
                 <Image
