@@ -1,0 +1,596 @@
+:root {
+  --sidebar-bg: #FFFFFF;
+  --main-bg: #F9FAFB;
+  --card-bg: #252628;
+  --card-border: #383A3E;
+  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07),
+                 0 2px 4px -2px rgba(0, 0, 0, 0.07);
+  --text-primary: #ced1d3;
+  --text-primarydark: #a9aeb1;
+  --text-secondary: #718096;
+  --border-color: #E5E7EB;
+  --accent-blue: #3B82F6;
+  --primary-green: #84cc16;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  margin: 0;
+  background-color: var(--admin-main-bg);
+  color: var(--text-primary);
+}
+
+.main-content {
+  flex: 1;
+  padding: 1.5rem;
+}
+
+.page-top-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.page-top-header h1 {
+  font-size: 1.3rem;
+  font-weight: 650;
+  color: var(--text-primary);
+  margin: 0;
+  margin-left: 10px;
+}
+
+.top-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.icon-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+.header-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.header-subtext {
+  font-size: 0.9rem;
+  color: var(--text-primary) !important;
+  font-weight: 400;
+  margin: 5px 0 0 10px !important;
+}
+
+/* --- Profile --- */
+.header-profile {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  min-width: 220px;
+}
+
+.header-avatar-wrapper {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.header-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.header-user-info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.user-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary) !important;
+}
+
+.user-email {
+  font-size: 0.8rem;
+  color: var(--text-primary);
+}
+
+.chevron-icon {
+  color: var(--text-primary);
+  flex-shrink: 0;
+}
+
+/* ================================
+   📊 Stats Cards
+================================ */
+.stats-cards-verification {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.instat-card {
+  background-color: var(--card-bg);
+  padding: 1rem;
+  border-radius: 12px;
+  border: 1px solid var(--card-border);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.instat-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  margin-left: 10px;
+}
+
+.instat-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.instat-card.blue .instat-icon {
+  background-color: #dbeafe;
+  color: #3b82f6;
+}
+
+.instat-card.orange .instat-icon {
+  background-color: #FFEDD4;
+  color: #f97316;
+}
+
+.instat-card.green .instat-icon {
+  background-color: #d1fae5;
+  color: #10b981;
+}
+
+.instat-card.red .instat-icon {
+  background-color: #FFF1F2;
+  color: #C71D36;
+}
+
+.instat-details .instat-label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-primarydark);
+}
+
+.instat-details .instat-value {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+/* ================================
+   📋 Workflow Card
+================================ */
+.workflow-card {
+  background-color: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid var(--card-border);
+  margin-bottom: 1rem;
+}
+
+.workflow-card h3 {
+  font-size: .9rem;
+  font-weight: 450;
+  margin: 0 0 1.5rem 0;
+}
+
+.workflow-steps {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.step {
+  flex: 1;
+  text-align: center;
+  position: relative;
+}
+
+.step-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 0.5rem;
+}
+
+.step-info h4 {
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.step-info p {
+  font-size: 0.8rem;
+  color: var(--text-primarydark);
+}
+
+/* --- Step Colors --- */
+.step.one .step-circle { background-color: #3b82f6; }
+.step.two .step-circle { background-color: #f97316; }
+.step.three .step-circle { background-color: #8b5cf6; }
+.step.four .step-circle { background-color: #22c55e; }
+
+/* --- Step Line --- */
+.step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: 60%;
+  width: 80%;
+  height: 4px;
+  background-color: #e5e7eb;
+  z-index: -1;
+}
+
+.step.one::after { background: linear-gradient(to right, #3b82f6 50%, #e5e7eb 50%); }
+.step.two::after { background: linear-gradient(to right, #f97316 50%, #e5e7eb 50%); }
+.step.three::after { background: linear-gradient(to right, #8b5cf6 50%, #e5e7eb 50%); }
+
+/* ================================
+   🏫 Applications Table
+================================ */
+.applications-table-card {
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  border: 1px solid var(--card-border);
+  overflow: hidden;
+}
+
+.ins-table {
+  padding: 2rem;
+}
+
+.instable-header-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  padding: 1.3rem;
+}
+
+.instable-header-actions h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.btn-add-institution {
+  background: #3b82f6;
+  color: white;
+  padding: 0.4rem 1rem;
+  border-radius: 6px;
+  border: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+/* --- Table Layout --- */
+.table-container {
+  overflow-x: auto;   /* ✅ enables horizontal scroll */
+  width: 100%;        /* take full parent width */
+}
+
+.applications-table {
+  font-size: 0.95rem;
+  overflow-x: auto; 
+  display: grid;
+  width: max-content; /* allow table to stretch beyond container */
+  border-collapse: collapse;
+}
+
+.instable-header,
+.instable-row {
+  display: grid;
+  grid-template-columns: 2.5fr 1.8fr 1.8fr 1.3fr 2fr; /* balanced spacing */
+  gap: 1rem;
+  padding: 0.75rem 1.5rem;
+  border-bottom: 1px solid var(--card-border);
+  text-align: left;           /* ✅ Align text left */
+  align-items: center;        /* Vertically center rows */
+  justify-items: start;   
+}
+
+.instable-header {
+  height: 50px;
+  font-weight: 600;
+  font-size: .85rem;
+  color: var(--text-primary);
+  background: var(--card-border);
+}
+
+.instable-row {
+  height: 70px;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--card-border);
+  transition: background 0.2s ease;
+}
+
+.instable-row:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* --- Institution Cell --- */
+.institution-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.inst-avatar-initials {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  color: #fff;
+  font-size: 0.85rem;
+}
+
+.institution-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.inst-name {
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.inst-location {
+  font-size: 0.8rem;
+  opacity: 0.7;
+  color: var(--text-primarydark);
+}
+
+.inst-avatar-initials {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: white;
+  flex-shrink: 0;
+}
+
+/* Specific color classes */
+.inst-avatar-initials.color-1 { background-color: #3b82f6; }
+.inst-avatar-initials.color-2 { background-color: #ef4444; }
+.inst-avatar-initials.color-3 { background-color: #8b5cf6; }
+.inst-avatar-initials.color-4 { background-color: #f97316; } /* Example for a 4th color */
+.inst-avatar-initials.color-5 { background-color: #10b981; } /* Example for a 5th color */
+
+
+.action-links {
+    display: flex;
+    gap: 1rem; /* Space out the action links */
+    align-items: center;
+}
+
+.action-links a {
+    white-space: nowrap; /* Prevent links from wrapping */
+}
+
+/* --- Status Badge --- */
+.status-badge {
+  display: inline-block;
+  text-align: center;      /* center align the text */
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.status-badge.status-active {
+    background-color: #dcfce7; /* light green */
+    color: #16a34a; /* dark green */
+}
+
+.status-badge.status-under-review {
+    background-color: #fef9c3; /* light yellow */
+    color: #a16207; /* dark yellow */
+}
+
+.status-badge.status-approved {
+    background-color: #dcfce7; /* light green */
+    color: #16a34a; /* dark green */
+}
+
+.status-badge.status-documents-required {
+    background-color: #fee2e2; /* light red */
+    color: #dc2626; /* dark red */
+}
+
+.status-badge.status-rejected {
+    background-color: #7f1d1d; /* light gray */
+    color: #fca5a5; /* dark gray */
+}
+
+.applications-table-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-top: 1.5rem;
+}
+
+.instable-header-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--card-border);
+}
+
+.btn-add-institution {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: #3b82f6; /* Example primary color */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.loading-text,
+.error-text {
+    padding: 1.5rem;
+    text-align: center;
+    color: var(--text-secondary);
+}
+
+.danger {
+    color: #ef4444; /* Example red for danger actions */
+}
+
+.btn {
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: .85rem;
+  text-decoration: none;
+  color: #fff;
+  display: inline-block;
+}
+
+.btn.view {
+  background: var(--card-border); /* blue */
+}
+
+.btn.edit {
+  background: var(--card-border); /* indigo */
+}
+
+.btn.request {
+  background: #f59e0b; /* amber */
+}
+
+.btn.review {
+  background: var(--card-border); /* sky */
+}
+
+.btn.approve {
+  background: var(--accent-blue); /* green */
+}
+
+.btn.danger {
+  background: #ef4444; 
+  color: white;
+}
+
+/* ==========================
+   📌 Table Footer + Pagination
+========================== */
+.instable-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  background: var(--card-bg);
+  border-top: 1px solid var(--card-border);
+}
+
+.pagination {
+  display: flex;
+  gap: 0.5rem;
+  margin-left: auto; /* pushes it to the right */
+}
+
+.page-link {
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  transition: all 0.2s ease;
+}
+
+.page-link:hover {
+  background: #383a3e;
+  color: #fff;
+}
+
+.page-link.active {
+  background: #4b5563; /* darker gray */
+  color: #fff;
+  font-weight: 600;
+  border-color: #4b5563;
+}
+
+/* ==========================
+   📌 Gray Scrollbar Styling
+========================== */
+.instable-container {
+  overflow-x: auto;
+  background-color: var(--card-bg);
+}
+
+.instable-container::-webkit-scrollbar {
+  height: 8px;
+  background-color: #2d2f33; /* darker gray track */
+}
+
+.instable-container::-webkit-scrollbar-thumb {
+  background-color: var(--card-bg); /* gray thumb */
+  border-radius: 6px;
+}
+
+.instable-container::-webkit-scrollbar-thumb:hover {
+  background-color: var(--card-bg); /* lighter gray on hover */
+}
+
+.instable-container::-webkit-scrollbar-track {
+  background-color: #1f2124; /* subtle track */
+}
+
+/* Firefox */
+.instable-container {
+  scrollbar-color: #6b7280 #1f2124;
+  scrollbar-width: thin;
+}
+

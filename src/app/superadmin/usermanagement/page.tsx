@@ -31,8 +31,7 @@ const UserManagementPage = () => {
       {/* Page Header */}
       <div className="page-top-header">
         <div className="header-text">
-          <h1>Welcome, Admin</h1>
-          <p className="header-subtext">Check your progress here</p>
+          <h1>User Management</h1>
         </div>
         <div className="top-header-actions">
           <button className="icon-button notification-button">

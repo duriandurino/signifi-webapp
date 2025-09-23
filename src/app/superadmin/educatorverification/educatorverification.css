@@ -1,0 +1,389 @@
+:root {
+  --card-bg: #252628;
+  --card-border: #383A3E;
+  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07),
+                 0 2px 4px -2px rgba(0, 0, 0, 0.07);
+  --text-primary: #ced1d3;
+  --text-primarydark: #a9aeb1;
+  --text-secondary: #718096;
+  --border-color: #E5E7EB;
+  --accent-blue: #3B82F6;
+  --primary-green: #84cc16;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  margin: 0;
+  background-color: var(--admin-main-bg);
+  color: var(--text-primary);
+}
+
+.main-content {
+  flex: 1;
+  padding: 1.5rem;
+}
+
+/* ==============================
+   Page Header
+================================= */
+.page-top-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.page-top-header h1 {
+  font-size: 1.3rem;
+  font-weight: 650;
+  color: var(--text-primary);
+  margin: 0;
+  margin-left: 10px;
+}
+
+.top-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.icon-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+/* Profile */
+.header-profile {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  min-width: 220px;
+}
+
+.header-avatar-wrapper {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.header-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.header-user-info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.user-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.user-email {
+  font-size: 0.8rem;
+  color: var(--text-primary);
+}
+
+.chevron-icon {
+  color: var(--text-primary);
+  flex-shrink: 0;
+}
+
+/* ==============================
+   Stats Cards
+================================= */
+.edustats-cards-verification {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.edustat-card {
+  background-color: var(--card-bg);
+  padding: .5rem;
+  border-radius: 12px;
+  border: 1px solid var(--card-border);
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  height: auto;
+}
+
+.card-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  margin-left: 20px;
+}
+
+.edustat-card.orange .card-icon { background-color: #fb923c; }
+.edustat-card.green .card-icon { background-color: #22c55e; }
+.edustat-card.red .card-icon { background-color: #ef4444; }
+
+.stat-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.stat-details .stat-value {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.stat-details .stat-label {
+  color: #6b7280;
+  font-size: 0.75rem;
+}
+
+.stat-details .stat-trend {
+  font-size: 0.65rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.stat-trend.positive { color: #10b981; }
+.stat-trend.negative { color: #ef4444; }
+
+/* ==============================
+   Table & Filters
+================================= */
+.edu-applications-table-card {
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  border: 1px solid var(--card-border);
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+.edu-table-header-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 1.5rem;
+}
+
+.edu-table-header-actions h3 {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.edu-table-filters {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.edu-table-search-bar {
+  position: relative;
+}
+
+.edu-table-search-bar input {
+  padding: 0.5rem 2rem 0.5rem 0.75rem;
+  border-radius: 6px;
+  font-size: .9rem;
+  color: var(--text-primary);
+  width: 300px;
+  border: 1px solid var(--card-border);
+}
+
+.edu-table-search-bar svg {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9ca3af;
+}
+
+.edu-table-filters select {
+  padding: 0.5rem;
+  font-size: .8rem;
+  border-radius: 6px;
+  border: 1px solid var(--card-border);
+}
+
+/* Table Wrapper for Horizontal Scroll */
+.edu-applications-table-wrapper {
+  overflow-x: auto;
+  width: 100%;
+}
+
+/* Table Structure */
+.edu-applications-table {
+  font-size: 0.95rem;
+  overflow-x: auto; 
+  display: grid;
+  width: max-content; /* allow table to stretch beyond container */
+  border-collapse: collapse;
+}
+
+.edu-table-header,
+.edu-table-row {
+  display: grid;
+  grid-template-columns: 2fr 1.3fr 2fr 1.3fr 1fr 1fr 1.5fr;
+  gap: 1rem;
+  align-items: center;
+  padding: 0 1.5rem;
+}
+
+.edu-table-header {
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 0.8rem;
+  text-transform: none;
+  background: var(--card-border);
+  height: 40px;
+}
+
+.edu-table-row {
+  height: 70px;
+  border-top: 1px solid var(--card-border);
+}
+
+/* Applicant Cell */
+.edu-applicant-cell {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.edu-applicant-cell > div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px; /* optional, adds small space between name & email */
+}
+
+.edu-applicant-avatar {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.edu-applicant-name {
+  font-weight: 500;
+}
+
+.edu-applicant-email {
+  color: #9ca3af;
+  font-size: 0.8rem;
+}
+
+/* Specialization Badge */
+.edu-spec-badge {
+  padding: 0.2rem 0.8rem;
+  border-radius: 99px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-align: center;
+  color: white;
+}
+
+.edu-spec-badge.edu-spec-beginner { background-color: #3b82f6; }
+.edu-spec-badge.edu-spec-intermediate { background-color: #f97316; }
+.edu-spec-badge.edu-spec-advanced { background-color: #ef4444; }
+.edu-spec-badge.edu-spec-medical { background-color: #14b8a6; }
+.edu-spec-badge.edu-spec-business { background-color: #8b5cf6; }
+
+/* Experience & Dates */
+.edu-exp-years { font-weight: 500; }
+.edu-exp-uni,
+.edu-app-days-ago { color: #9ca3af; font-size: 0.8rem; }
+.edu-app-date { font-weight: 500; }
+
+.edu-exp-uni {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--text-primarydark);
+}
+
+/* Status Badge */
+.edu-status-badge {
+  padding: 0.2rem 0.6rem;
+  border-radius: 99px;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+.edu-status-badge.edu-status-pending-review { background-color: #fef9c3; color: #ca8a04; }
+.edu-status-badge.edu-status-under-review { background-color: #dbeafe; color: #3b82f6; }
+.edu-status-badge.edu-status-documents-needed { background-color: #fee2e2; color: #ef4444; }
+
+/* Documents Icons */
+.edu-doc-icons {
+  display: flex;
+  gap: 0.75rem;
+  color: #9ca3af;
+}
+
+/* Action Buttons */
+.edu-action-buttons { display: flex; gap: 0.5rem; }
+
+.edu-action-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.edu-action-btn.edu-view { color: #6b7280; }
+.edu-action-btn.edu-approve { color: #10b981; }
+.edu-action-btn.edu-reject { color: #ef4444; }
+
+/* Table Footer & Pagination */
+.edu-table-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  border-top: 1px solid #e5e7eb;
+}
+
+.edu-pagination {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.edu-page-link {
+  padding: 0.5rem 0.75rem;
+  text-decoration: none;
+  color: var(--text-primary);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+}
+
+.edu-page-link.active {
+  background-color: var(--card-border);
+  color: var(--text-primary);
+  font-weight: 600;
+}

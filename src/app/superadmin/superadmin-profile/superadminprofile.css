@@ -1,0 +1,217 @@
+/* ==========================
+   🎨 Root Variables
+========================== */
+:root {
+  --sidebar-bg: #FFFFFF;
+  --main-bg: #F9FAFB;
+  --card-bg: #252628;
+  --card-border: #383A3E;
+  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07),
+                 0 2px 4px -2px rgba(0, 0, 0, 0.07);
+
+  --text-primary: #ced1d3;
+  --text-secondary: #718096;
+  --text-primarydark: #a9aeb1;
+}
+
+/* ==========================
+   🖋 Global Styles
+========================== */
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  margin: 0;
+  background-color: var(--admin-main-bg);
+  color: var(--text-primary);
+}
+
+.main-content {
+  flex: 1;
+  padding: 1.5rem;
+}
+
+/* ==========================
+   📐 Grid Layout
+========================== */
+.sp-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr; /* 1 part left, 2 parts right */
+  gap: 1.5rem;
+  align-items: start;
+  margin-top: 2rem;
+}
+
+.sp-left-column,
+.sp-right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* ==========================
+   🗂 Shared Card Style
+========================== */
+.sp-card {
+  background-color: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid var(--card-border);
+}
+
+.sp-card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  padding-bottom: 1rem;
+  margin: 0 0 1.5rem 0;
+  border-bottom: 1px solid var(--card-border);
+}
+
+/* ==========================
+   👤 Left Column Cards
+========================== */
+.sp-profile-picture-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.10rem;
+}
+
+.sp-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.sp-user-name {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+.sp-user-title {
+  font-size: 0.9rem;
+  color: var(--text-primarydark);
+}
+
+.sp-btn-change-photo {
+  background-color: #3b82f6;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border: none;
+  font-size: .8rem;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
+
+.sp-overview-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.sp-overview-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  color: var(--text-primary);
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--card-border);
+}
+
+.sp-overview-item:last-child {
+  border-bottom: none;
+}
+
+.sp-overview-item span:first-child {
+  color: var(--text-primary);
+}
+
+.sp-overview-item span:last-child {
+  font-weight: 500;
+}
+
+.sp-highlight-blue {
+  color: #3b82f6;
+}
+
+.sp-highlight-green {
+  color: #10b981;
+}
+
+/* ==========================
+   📝 Right Column Forms
+========================== */
+.sp-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.sp-form-row {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.sp-form-group {
+  flex: 1;
+}
+
+.sp-form-group label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.sp-form-group input,
+.sp-form-group textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  border: 1px solid var(--card-border);
+  box-sizing: border-box;
+  background: var(--card-bg);
+}
+
+.sp-form-group textarea {
+  resize: vertical;
+
+}
+
+.sp-form-group.sp-align-bottom {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.sp-btn-change-password {
+  background-color: #f59e0b;
+  color: #78350f;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  border: none;
+  font-size: .8rem;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+/* ==========================
+   📱 Responsive
+========================== */
+@media (max-width: 1024px) {
+  .sp-grid {
+    grid-template-columns: 1fr;
+  }
+}
