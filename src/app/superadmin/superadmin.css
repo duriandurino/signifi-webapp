@@ -2,13 +2,17 @@
 :root {
   --admin-sidebar-bg: #111214;     /* Sidebar background (dark) */
   --admin-main-bg: #1E1F21;        /* Main background */
-  --admin-text-primary: #ced1d3;   /* Primary sidebar text */
-  --admin-text-secondary: #f3f4f6; /* Muted text */
+  --admin-text-primary: #ced1d3;   /* Primary text */
+  --admin-text-secondary: #718096; /* Muted text (fixed like institution admin) */
   --admin-text-active: #f3f4f6;    /* Active link text */
   --admin-border-color: #e5e7eb;   /* Border color */
   --admin-accent-blue: #2984D1;    /* Accent blue */
   --admin-hover-bg: #2D2E30;       /* Hover background */
   --admin-active-bg: #2D2E30;      /* Active background */
+
+  --admin-card-bg: #252628;
+  --admin-card-border: #383A3E;
+  --admin-card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.07);
 }
 
 body { 
@@ -17,27 +21,24 @@ body {
   background-color: var(--admin-main-bg); 
 }
 
+/* --- DASHBOARD LAYOUT --- */
 .dashboard-layout {
   display: flex;
   min-height: 100vh;
-  gap: 0.5rem;
+  background: var(--admin-main-bg);
+}
+
+.main-section {
+  flex: 1; 
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
 }
 
 .main-content {
   flex-grow: 1;
-  padding: 1.5rem 1rem; 
+  padding: 1.5rem;
   overflow-y: auto;
-}
-
-/* --- ADMIN LAYOUT --- */
-.admin-layout { 
-  display: flex; 
-  min-height: 100vh; 
-}
-
-.admin-main-content { 
-  flex-grow: 1; 
-  padding: 2rem 3rem; 
 }
 
 /* --- SIDEBAR --- */
@@ -64,7 +65,7 @@ body {
   font-size: 1.13rem; 
   font-weight: 500; 
   margin: 0; 
-  color: var(--admin-text-primary); /* light accent like Institution Admin */
+  color: var(--admin-text-primary);
 }
 
 /* Sidebar Navigation */
@@ -108,9 +109,8 @@ body {
   flex-shrink: 0;
 }
 
-
 .admin-sidebar-nav {
-  flex: .5; /* pushes logout to the bottom */
+  flex: .5;
 }
 
 .sidebar-logout {
@@ -123,7 +123,7 @@ body {
   gap: 0.75rem;
   background: none;
   border: none;
-  color: var(--text-primary);
+  color: var(--admin-text-primary);
   font-size: 0.85rem;
   font-weight: 600;
   cursor: pointer;
@@ -134,4 +134,151 @@ body {
 
 .logout-btn:hover {
   color: #ef4444; /* red hover */
+}
+
+/* ---- HEADER ----- */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--admin-main-bg);
+  margin-top: 20px;
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.header-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.header-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--admin-text-primary);
+}
+
+.header-subtext  {
+  font-size: 0.9rem;
+  margin: 0;
+  color: var(--admin-text-primary);
+}
+
+.top-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Notification */
+.notification-button {
+  position: relative;
+  background: none;
+  border: none;
+  color: var(--admin-text-primary);
+  cursor: pointer;
+}
+
+.notification-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 18px;
+  height: 18px;
+  font-size: 0.7rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: red;
+  color: white;
+}
+
+/* Profile */
+.header-profile {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--admin-text-primary);
+}
+
+.header-avatar-wrapper {
+  width: 40px;
+  height: 40px;
+}
+
+.header-avatar {
+  border-radius: 50%;
+}
+
+.header-user-info {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.user-name {
+  font-weight: 500;
+  color: var(--admin-text-primary);
+}
+
+.user-email {
+  font-size: 0.85rem;
+  color: var(--admin-text-secondary);
+}
+
+/* Dropdown */
+.profile-dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  right: 0;
+  margin-top: 0.5rem;
+  width: 250px;
+  background: var(--admin-card-bg);
+  border: 1px solid var(--admin-card-border);
+  border-radius: 0.5rem;
+  box-shadow: var(--admin-card-shadow);
+  z-index: 100;
+}
+
+.dropdown-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.dropdown-menu li {
+  font-size: .9rem;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--admin-text-primary);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.dropdown-menu li:hover {
+  background: var(--admin-hover-bg);
+}
+
+.dropdown-menu li.danger {
+  color: red;
+}
+
+.chevron-icon {
+  transition: transform 0.2s ease;
+}
+
+.chevron-icon.open {
+  transform: rotate(180deg);
 }

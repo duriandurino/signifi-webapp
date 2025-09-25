@@ -2,8 +2,8 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { Video, Target, BarChart2, Eye, EyeOff } from 'lucide-react';
-import './signup.css';
+import { Video, Target, BarChart2, Eye, EyeOff, Upload } from 'lucide-react';
+import './adminsignup.css';
 import { apiFetch } from '@/lib/api';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/contexts/AuthContext';
@@ -18,41 +18,68 @@ const AdminSignupPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [institution, setInstitution] = useState('');
+  const [institutionAddress, setInstitutionAddress] = useState('');
+  const [role, setRole] = useState('');
+  const [adminAgreement, setAdminAgreement] = useState(false);
   const [acceptTerms, setAcceptTerms] = useState(false);
+  const [verificationFile, setVerificationFile] = useState<File | null>(null);
 
   // --- UI States ---
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const togglePasswordVisibility = () => {
-    setPasswordVisible(!passwordVisible);
+  const togglePasswordVisibility = () => setPasswordVisible(!passwordVisible);
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      setVerificationFile(e.target.files[0]);
+    }
   };
+
+  // --- Example list of recognized institutions ---
+  const institutionList = [
+    'University of the Philippines',
+    'Ateneo de Manila University',
+    'De La Salle University',
+    'Other'
+  ];
 
   // --- Handle Submit ---
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError(null);
 
-    if (!acceptTerms) {
-      setError('Please accept the Terms to continue');
+    if (!acceptTerms || !adminAgreement) {
+      setError('Please accept all required agreements to continue');
       return;
     }
 
     try {
       setLoading(true);
       const full_name = `${firstName} ${lastName}`.trim();
+
+      const formData = new FormData();
+      formData.append('full_name', full_name);
+      formData.append('email', email);
+      formData.append('password', password);
+      formData.append('institution', institution);
+      formData.append('institution_address', institutionAddress);
+      formData.append('role', role);
+      if (verificationFile) {
+        formData.append('verification_file', verificationFile);
+      }
+
       const resp = await apiFetch<{ token: string; user: any }>(
-        '/api/auth/register-educator',
+        '/api/auth/register-institution-admin',
         {
           method: 'POST',
-          body: JSON.stringify({ email, password, full_name }),
+          body: formData,
         }
       );
 
-      // login user after success
       login(resp.token, resp.user);
-      router.replace('/educator/dashboard');
+      router.replace('/institution/dashboard');
     } catch (err: any) {
       setError(err?.message || 'Registration failed');
     } finally {
@@ -62,7 +89,7 @@ const AdminSignupPage = () => {
 
   return (
     <div className="signup-container">
-      {/* --- Left Panel (Informational) --- */}
+      {/* --- Left Panel --- */}
       <div className="info-panel-signup">
         <div className="info-content-signup">
           <div className="logo-header">
@@ -86,12 +113,19 @@ const AdminSignupPage = () => {
         </div>
       </div>
 
-      {/* --- Right Panel (The Form) --- */}
+      {/* --- Right Panel (Form) --- */}
       <div className="form-panel-signup">
         <div className="form-content-signup">
-          <h2>Create account <span className="highlight">.</span></h2>
+          <h2>Create Account <span className="highlight">.</span></h2>
+          <p className="admin-note">
+            NOTE: This account will represent your institution.
+          </p>
+          <p className="admin-note">
+            Please provide your information as the designated admin.
+          </p>
 
           <form className="signup-form" onSubmit={onSubmit}>
+            {/* Name Row */}
             <div className="form-row">
               <div className="input-group">
                 <label htmlFor="firstName">First Name</label>
@@ -117,6 +151,7 @@ const AdminSignupPage = () => {
               </div>
             </div>
 
+            {/* Email */}
             <div className="input-group">
               <label htmlFor="email">Email Address</label>
               <input
@@ -129,6 +164,7 @@ const AdminSignupPage = () => {
               />
             </div>
 
+            {/* Password */}
             <div className="input-group">
               <label htmlFor="password">Password</label>
               <div className="input-field-password">
@@ -150,15 +186,69 @@ const AdminSignupPage = () => {
               </div>
             </div>
 
+            {/* Institution Selection */}
             <div className="input-group">
-              <label htmlFor="institution">Education Institution</label>
-              <input
-                type="text"
+              <label htmlFor="institution">Select Institution</label>
+              <select
                 id="institution"
-                placeholder="University/College Name"
                 value={institution}
                 onChange={(e) => setInstitution(e.target.value)}
+                required
+              >
+                <option value="">-- Select University --</option>
+                {institutionList.map((inst) => (
+                  <option key={inst} value={inst}>{inst}</option>
+                ))}
+              </select>
+            </div>
+
+            {/* Institution Address */}
+            <div className="input-group">
+              <label htmlFor="institutionAddress">Institution Address / Campus Location (optional)</label>
+              <input
+                type="text"
+                id="institutionAddress"
+                placeholder="Enter address or campus location"
+                value={institutionAddress}
+                onChange={(e) => setInstitutionAddress(e.target.value)}
               />
+            </div>
+
+            {/* Role 
+            <div className="input-group">
+              <label htmlFor="role">Role / Department</label>
+              <input
+                type="text"
+                id="role"
+                placeholder="e.g., IT Admin, Registrar"
+                value={role}
+                onChange={(e) => setRole(e.target.value)}
+                required
+              />
+            </div>*/}
+
+            {/* Verification File */}
+            <div className="input-group">
+              <label htmlFor="verificationFile">Upload Institution Verification Document (optional)</label>
+              <input
+                type="file"
+                id="verificationFile"
+                accept=".pdf"
+                onChange={handleFileChange}
+              />
+            </div>
+
+            {/* Agreements */}
+            <div className="terms-group">
+              <input
+                type="checkbox"
+                id="adminAgreement"
+                checked={adminAgreement}
+                onChange={(e) => setAdminAgreement(e.target.checked)}
+              />
+              <label htmlFor="adminAgreement">
+                I agree to the <a href="#">Admin Guidelines / Institution Agreement</a>
+              </label>
             </div>
 
             <div className="terms-group">

@@ -1,59 +1,10 @@
 "use client";
 
-import React from "react";
-import { Users, UserCheck, AlertTriangle, Bell, ChevronDown } from "lucide-react";
+import React, { useState, useRef, useEffect } from "react";
+import { Users, UserCheck, AlertTriangle, Bell, ChevronDown, Settings, User, HelpCircle,LogOut} from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import "./dashboard.css";
-
-const Header = () => {
-  const router = useRouter();
-  const unreadCount = 3; // Replace with real count from BACKEND later
-
-  return (
-    <div className="page-top-header">
-      <div className="header-text">
-        <h1>Welcome, Admin</h1>
-        <p className="header-subtext">
-          Here’s what’s happening in your institution
-        </p>
-      </div>
-
-      <div className="top-header-actions">
-        {/* Notification button with badge */}
-        <button
-          className="icon-button notification-button relative"
-          onClick={() => router.push("/institution-admin/notifications")}
-        >
-          <Bell size={26} />
-          {unreadCount > 0 && (
-            <span className="absolute -top-1 -right-1 flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-red-500 rounded-full">
-              {unreadCount}
-            </span>
-          )}
-        </button>
-
-        {/* Profile */}
-        <div className="header-profile">
-          <div className="header-avatar-wrapper">
-            <Image
-              src="/profile.jpg"
-              alt="User Avatar"
-              width={40}
-              height={40}
-              className="header-avatar"
-            />
-          </div>
-          <div className="header-user-info">
-            <span className="user-name">Admin User</span>
-            <span className="user-email">institutionadmin@gmail.com</span>
-          </div>
-          <ChevronDown size={20} className="chevron-icon" />
-        </div>
-      </div>
-    </div>
-  );
-};
 
 const AdminDashboardPage = () => {
   // Mock statistics
@@ -112,7 +63,6 @@ const AdminDashboardPage = () => {
   return (
     <div className="admin-dashboard">
       {/* Top Header */}
-      <Header />
 
       {/* Statistics Cards Grid */}
       <div className="card-box">

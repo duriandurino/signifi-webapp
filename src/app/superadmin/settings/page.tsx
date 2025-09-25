@@ -8,31 +8,7 @@ const SystemSettingsPage = () => {
   return (
     <>
       {/* Page Header */}
-      <div className="page-top-header">
-        <div className="header-text">
-          <h1>System Settings</h1>
-        </div>
-        <div className="top-header-actions">
-
-          <div className="header-profile">
-            <div className="header-avatar-wrapper">
-              <Image
-                src="/profile.jpg"
-                alt="User Avatar"
-                width={40}
-                height={40}
-                className="header-avatar"
-              />
-            </div>
-            <div className="header-user-info">
-              <span className="user-name">Admin User</span>
-              <span className="user-email">Institution Admin</span>
-            </div>
-            <ChevronDown size={20} className="chevron-icon" />
-          </div>
-        </div>
-      </div>
-
+      
       {/* --- System Status Banner --- */}
       <div className="ss-status-banner">
         <Cog size={18} />

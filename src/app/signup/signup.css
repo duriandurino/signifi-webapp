@@ -156,6 +156,19 @@ body {
 }
 .btn-create-account:hover { background-color: #254edb; transform: translateY(-2px); }
 
+/* Autofill Fix: prevent white flash on dark inputs */
+.signup-form input:-webkit-autofill,
+.signup-form input:-webkit-autofill:hover,
+.signup-form input:-webkit-autofill:focus,
+.signup-form select:-webkit-autofill,
+.signup-form textarea:-webkit-autofill {
+  background-color: var(--bg-input) !important;
+  -webkit-box-shadow: 0 0 0 1000px var(--bg-input) inset !important;
+  -webkit-text-fill-color: var(--text-primary) !important;
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+
 /* --- Responsive adjustments --- */
 @media (max-width: 1024px) {
   .info-panel-signup { display: none; }

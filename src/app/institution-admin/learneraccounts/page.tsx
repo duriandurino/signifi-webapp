@@ -42,34 +42,8 @@ const LearnerManagementPage = () => {
 
   return (
     <>
+      <div className="learner-accounts-container">
       {/* Page Header */}
-      <div className="page-top-header">
-        <div className="header-text">
-          <h1>Learner Account Management</h1>
-          <p className="header-subtext">
-            Manage existing learner accounts, including adding new users or deleting inactive ones
-          </p>
-        </div>
-        <div className="top-header-actions">
-        
-          <div className="header-profile">
-            <div className="header-avatar-wrapper">
-              <Image
-                src="/profile.jpg"
-                alt="User Avatar"
-                width={40}
-                height={40}
-                className="header-avatar"
-              />
-            </div>
-            <div className="header-user-info">
-              <span className="user-name">Admin User</span>
-              <span className="user-email">Institution Admin</span>
-            </div>
-            <ChevronDown size={20} className="chevron-icon" />
-          </div>
-        </div>
-      </div>
 
       {/* --- Main Content Card --- */}
       <section className="content-card-wrapper">
@@ -139,6 +113,7 @@ const LearnerManagementPage = () => {
           </div>
         </div>
       </section>
+    </div>
     </>
   );
 };

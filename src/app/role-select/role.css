@@ -104,7 +104,7 @@ body {
 
 /* --- Button and Link Styles --- */
 .btn {
-  background-color: white;
+  background-color: #95b6fb;
   padding: 0.70rem 3rem;
   border-radius: 99px; /* Fully rounded */
   border: 2px soli.5d rgba(255, 255, 255, 0.5); /* Subtle white border */

@@ -15,7 +15,6 @@ const navLinks = [
   { href: "/superadmin/usermanagement", icon: Users, label: "User Management" },
   { href: "/superadmin/institutionverification", icon: University, label: "Institution Verification" },
   { href: "/superadmin/educatorverification", icon: UserCheck, label: "Educator Verification" },
-  { href: "/superadmin/superadmin-profile", icon: Eye, label: "View Profile" },
   { href: "/superadmin/settings", icon: Settings, label: "Settings" }
 ];
 

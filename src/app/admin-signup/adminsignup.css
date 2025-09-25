@@ -95,7 +95,15 @@ body {
 .form-content-signup { width: 100%; max-width: 500px; }
 .form-content-signup h2 { font-size: 2.2rem; font-weight: 700; margin-bottom: 1rem; }
 
-.signup-form { display: flex; flex-direction: column; }
+.admin-note {
+  font-size: 0.85rem;             /* slightly smaller than normal text */
+  color: var(--text-secondary);  /* use your secondary text color */
+  margin: -0.5rem 0 .5rem 0;    /* tighten gap above, add space below */
+  line-height: 1.5;              /* improve readability */
+  max-width: 500px;       
+}
+
+.signup-form { display: flex; flex-direction: column; margin-top: 1.5rem;}
 .form-row { display: flex; gap: 1.5rem; }
 .input-group { 
     margin-bottom: 1rem; 
@@ -103,12 +111,64 @@ body {
  }
 .input-group label {
   display: block;
-  font-size: 0.875rem;
+  font-size: 0.8rem;
   font-weight: 500;
   color: var(--text-secondary);
   margin-bottom: 0.5rem;
   margin-left: 5px;
 }
+
+/* --- Match Select Dropdown with Input Style --- */
+.signup-form select {
+  width: 100%;
+  padding: .6rem;
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  color: var(--text-primary);
+  font-size: 1rem;
+  box-sizing: border-box;
+  transition: all 0.2s;
+  appearance: none; /* removes default arrow */
+  background-image: url("data:image/svg+xml;utf8,<svg fill='%23cdd6e3' height='24' viewBox='0 0 24 24' width='24'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px 16px;
+}
+
+.signup-form select:focus {
+  outline: none;
+  border-color: var(--accent-blue);
+}
+
+/* --- Match File Upload with Input Style --- */
+.signup-form input[type="file"] {
+  width: 100%;
+  padding: .6rem;
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.signup-form input[type="file"]::file-selector-button {
+  background-color: var(--accent-blue);
+  color: var(--text-primary);
+  border: none;
+  border-radius: 10px;
+  padding: .5rem 1rem;
+  margin-right: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.signup-form input[type="file"]::file-selector-button:hover {
+  background-color: #254edb;
+}
+
 
 .signup-form input[type="text"],
 .signup-form input[type="email"],
@@ -136,9 +196,58 @@ body {
   color: var(--text-secondary); cursor: pointer;
 }
 
+/* File input styling */
+.signup-form input[type="file"] {
+  width: 100%;
+  padding: .6rem;
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+/* The actual "Choose File" button */
+.signup-form input[type="file"]::file-selector-button {
+  background-color: var(--border-color);   /* your theme blue */
+  color: var(--text-primary);             /* white text */
+  border: none;
+  border-radius: 10px;
+  padding: .5rem 1rem;
+  margin-right: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-size: .85rem;
+  font-weight: 500;
+}
+
+/* Hover effect */
+.signup-form input[type="file"]::file-selector-button:hover {
+  background-color: #254edb; /* darker blue */
+}
+
+/* Firefox support */
+.signup-form input[type="file"]::-moz-file-upload-button {
+  background-color: var(--accent-blue);
+  color: var(--text-primary);
+  border: none;
+  border-radius: 10px;
+  padding: .5rem 1rem;
+  margin-right: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.signup-form input[type="file"]::-moz-file-upload-button:hover {
+  background-color: #254edb;
+}
+
+
 .terms-group {
   display: flex; align-items: center; gap: 0.75rem;
-  margin-bottom: 1.7rem;
+  margin-bottom: 1rem;
   margin-left: 10px;
   font-size: 0.875rem; color: var(--text-secondary);
 }
@@ -153,8 +262,22 @@ body {
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s;
+  margin-top: 10px;
 }
 .btn-create-account:hover { background-color: #254edb; transform: translateY(-2px); }
+
+/* Prevent white autofill background */
+.signup-form input:-webkit-autofill,
+.signup-form input:-webkit-autofill:hover,
+.signup-form input:-webkit-autofill:focus,
+.signup-form select:-webkit-autofill,
+.signup-form textarea:-webkit-autofill {
+  background-color: var(--bg-input) !important;
+  -webkit-box-shadow: 0 0 0 1000px var(--bg-input) inset !important;
+  -webkit-text-fill-color: var(--text-primary) !important;
+  transition: background-color 9999s ease-in-out 0s;
+}
+
 
 /* --- Responsive adjustments --- */
 @media (max-width: 1024px) {

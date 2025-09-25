@@ -60,7 +60,7 @@ body {
 }
 
 .mark-read-btn:hover {
-  background: #2563eb;
+  background: var(--card-bg);
 }
 
 .settings-btn {
@@ -72,7 +72,7 @@ body {
   border-radius: 0.6rem;
   border: none;
   background: var(--card-border);
-  color: var(--text-dark);
+  color: var(--text-primary);
   cursor: pointer;
   transition: background 0.2s;
 }

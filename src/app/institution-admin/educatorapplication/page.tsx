@@ -35,30 +35,6 @@ const EducatorApplicationsPage = () => {
   return (
     <div className="educator-applications-container">
       {/* Page Header */}
-        <div className="page-top-header">
-          <div className="header-text">
-            <h1>Educator Applications</h1>
-            <p className="header-subtext">Review and process new applications from prospective educators</p>
-          </div>
-          <div className="header-actions">
-            <div className="header-profile">
-              <div className="header-avatar-wrapper">
-                <Image
-                  src="/profile.jpg"
-                  alt="User Avatar"
-                  width={40}
-                  height={40}
-                  className="header-avatar"
-                />
-              </div>
-              <div className="header-user-info">
-                <span className="user-name">Admin User</span>
-                <span className="user-email">Institution Admin</span>
-              </div>
-              <ChevronDown size={20} className="chevron-icon" />
-            </div>
-          </div>
-        </div>
 
       {/* Main Content Card */}
       <div className="educatortable-wrapper">

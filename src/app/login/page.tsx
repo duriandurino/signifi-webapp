@@ -120,7 +120,7 @@ const LoginPage = () => {
 
           <div className="extra-links">
             <p>
-              Don’t have an account? <a href="/signup">Create Account</a>
+              Don’t have an account? <a href="/role-select">Create Account</a>
             </p>
             <p className="terms-text">
               By signing in, you agree to our{" "}
