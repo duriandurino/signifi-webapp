@@ -1,0 +1,159 @@
+/* ------------------------------
+   Invite Student modal (full)
+   ------------------------------ */
+
+/* overlay backdrop */
+.invite-overlay {
+  position: fixed;
+  inset: 0; /* top/right/bottom/left: 0 */
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 1rem; /* allows spacing on small screens */
+}
+
+/* modal container */
+.invite-modal {
+  width: 100%;
+  max-width: 620px;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 10px 30px rgba(2, 6, 23, 0.12);
+  animation: inviteSlideUp 220ms ease-out;
+  outline: none;
+}
+
+/* header */
+.invite-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.invite-header h2 {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #0f172a; /* dark text */
+}
+
+.close-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+  color: #6b7280;
+  padding: 0.25rem;
+  border-radius: 6px;
+}
+.close-btn:hover { color: #111827; background: rgba(15,23,42,0.03); }
+
+/* form layout */
+.invite-form {
+  display: grid;
+  gap: 0.9rem;
+}
+
+/* row for first+last name */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+/* form group */
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #111827;
+  margin-bottom: 0.35rem;
+}
+
+/* inputs / textarea / select */
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.55rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #d1d5db; /* neutral */
+  background: #ffffff;
+  font-size: 0.95rem;
+  color: #0f172a;
+  transition: box-shadow .12s ease, border-color .12s ease;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #9ca3af;
+}
+
+/* focus styles */
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #3b82f6; /* primary-blue */
+  box-shadow: 0 6px 18px rgba(59,130,246,0.08);
+}
+
+/* actions (buttons) */
+.invite-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+/* cancel */
+.cancel-btn {
+  background: #eef2f7; /* light */
+  color: #0f172a;
+  padding: 0.55rem 0.9rem;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  font-weight: 600;
+}
+.cancel-btn:hover { background: #e6eef7; }
+
+/* submit */
+.submit-btn {
+  background: #2D9966; /* primary green */
+  color: #ffffff;
+  padding: 0.55rem 1rem;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  font-weight: 600;
+}
+.submit-btn:hover { background: #238a5a; }
+
+/* disabled state */
+.submit-btn[disabled],
+.cancel-btn[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* animation */
+@keyframes inviteSlideUp {
+  from { transform: translateY(18px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* responsive: stack name fields on narrow screens */
+@media (max-width: 560px) {
+  .form-row { grid-template-columns: 1fr; }
+  .invite-modal { padding: 1rem; }
+}

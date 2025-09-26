@@ -12,24 +12,6 @@ export default function SettingsPage() {
 
   return (
     <div className="settings-page">
-      <div className="page-top-header">
-        <div className="header-text">
-          <h1>Settings</h1>
-        </div>
-        <div className="top-header-actions">
-         
-          <div className="header-profile">
-            <div className="header-avatar-wrapper">
-              <Image src="/profile.jpg" alt="User Avatar" width={40} height={40} className="header-avatar" />
-            </div>
-            <div className="header-user-info">
-              <span className="user-name">Prof. SigniFi</span>
-              <span className="user-email">signifi@gmail.com</span>
-            </div>
-            <ChevronDown size={20} className="chevron-icon" />
-          </div>
-        </div>
-      </div>
 
       {/* Notification Settings */}
       <section className="settings-section">

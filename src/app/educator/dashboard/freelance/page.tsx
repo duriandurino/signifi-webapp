@@ -136,44 +136,6 @@ const FreelanceDashboardPage = () => {
 
   return (
     <>
-      <div className="page-top-header">
-        <div className="header-text">
-          <h1>Welcome, Professor</h1>
-          <p className="header-subtext">Check your progress here</p>
-        </div>
-        <div className="top-header-actions">
-          {/* Notification button with badge */}
-          <button
-            className="icon-button notification-button relative"
-            onClick={() => router.push("/educator/notifications/freelance-notif")}
-          >
-            <Bell size={22} />
-                     {unreadCount > 0 && (
-                       <span className="absolute -top-1 -right-1 flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-red-500 rounded-full">
-                         {unreadCount}
-                       </span>
-                     )}
-          </button>
-
-          {/* Profile dropdown */}
-          <div className="header-profile">
-            <div className="header-avatar-wrapper">
-              <Image
-                src="/profile.jpg"
-                alt="User Avatar"
-                width={40}
-                height={40}
-                className="header-avatar"
-              />
-            </div>
-            <div className="header-user-info">
-              <span className="user-name">Prof. SigniFi</span>
-              <span className="user-email">signifi@gmail.com</span>
-            </div>
-            <ChevronDown size={20} className="chevron-icon" />
-          </div>
-        </div>
-      </div>
 
       <div className="dashboard-content-box">
         <nav className="dashboard-tabs">

@@ -91,26 +91,7 @@ const CoursesPage = () => {
   return (
     <>
       {/* --- Top Header --- */}
-      <div className="page-top-header">
-        <div className="header-text">
-          <h1>Course Management</h1>
-          <p className="header-subtext">Create, edit, and manage your FSL courses</p>
-        </div>
-        <div className="top-header-actions">
-
-          <div className="header-profile">
-            <div className="header-avatar-wrapper">
-              <Image src="/profile.jpg" alt="User Avatar" width={40} height={40} className="header-avatar" />
-            </div>
-            <div className="header-user-info">
-              <span className="user-name">Prof. SigniFi</span>
-              <span className="user-email">signifi@gmail.com</span>
-            </div>
-            <ChevronDown size={20} className="chevron-icon" />
-          </div>
-        </div>
-      </div>
-
+      
       {/* --- White Content Container --- */}
       <div className="content-container">
 
