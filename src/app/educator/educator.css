@@ -82,7 +82,6 @@ body {
   font-weight: 400;
   color: var(--educator-text-light);
   transition: all 0.2s ease-in-out;
-  border-left: 3px solid transparent;
 }
 
 .educator-sidebar-nav li a:hover,
@@ -281,6 +280,18 @@ body {
   color: #2d3748;
 }
 
+.modal-card h2{
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+
+}
+
+.modal-card p{
+  font-size: .9rem;
+
+}
+
 .modal-header {
   display: flex;
   justify-content: space-between;
@@ -295,9 +306,11 @@ body {
   margin-top: 2rem;
 }
 
-.btn-cancel {
+.btn-logoutcancel {
   background: #e0e2e4;
   color: #2d3748;
+    font-size: .9rem;
+
   border-radius: 6px;
   padding: 0.5rem 1rem;
   cursor: pointer;
@@ -306,7 +319,13 @@ body {
 .btn-logout {
   background: #ef4444;
   color: white;
+  font-size: .9rem;
   border-radius: 6px;
   padding: 0.5rem 1rem;
   cursor: pointer;
 }
+
+.logout-item {
+  margin-top: 3rem; /* adjust: 1rem ~ 16px */
+}
+

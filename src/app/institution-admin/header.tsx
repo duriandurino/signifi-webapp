@@ -8,9 +8,11 @@ import { Bell, ChevronDown, User, Settings, HelpCircle, LogOut } from "lucide-re
 export default function Header({
   title,
   subtitle,
+  setShowLogoutModal, // receive logout handler from layout
 }: {
   title: string;
   subtitle?: string;
+  setShowLogoutModal?: (open: boolean) => void;
 }) {
   const router = useRouter();
   const [open, setOpen] = useState(false);
@@ -65,7 +67,7 @@ export default function Header({
           {open && (
             <div className="dropdown-menu">
               <ul>
-                <li onClick={() => router.push("/institution-admin/profile")}>
+                <li onClick={() => router.push("/institution-admin/institution-profile")}>
                   <User size={16} /> Profile
                 </li>
                 <li onClick={() => router.push("/institution-admin/settings")}>
@@ -74,7 +76,10 @@ export default function Header({
                 <li onClick={() => router.push("/institution-admin/help")}>
                   <HelpCircle size={16} /> Help & Support
                 </li>
-                <li className="danger" onClick={() => alert("Logging out...")}>
+                <li
+                  className="danger"
+                  onClick={() => setShowLogoutModal?.(true)} // open logout modal
+                >
                   <LogOut size={16} /> Logout
                 </li>
               </ul>

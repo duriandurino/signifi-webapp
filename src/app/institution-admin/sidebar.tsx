@@ -1,4 +1,4 @@
-"use client"; 
+"use client";
 
 import React from 'react';
 import Image from 'next/image';
@@ -29,14 +29,15 @@ const navGroups = [
         ],
     },
     {
-    title: 'ANALYTICS & FEEDBACK',
+        title: 'ANALYTICS & FEEDBACK',
         items: [
             { name: 'Student Progress', href: '/institution-admin/studentprogress', icon: Building },
         ],
     },
 ];
 
-const Sidebar = () => {
+// 👇 Accept the logout handler as a prop
+const Sidebar = ({ setShowLogoutModal }: { setShowLogoutModal: (open: boolean) => void }) => {
   const pathname = usePathname();
 
   return (
@@ -53,9 +54,7 @@ const Sidebar = () => {
                 <h2 className="group-title">{group.title}</h2>
                 <ul>
                   {group.items.map((item) => (
-                    // 2. Use the dynamic item.href for the active check
                     <li key={item.name} className={pathname === item.href ? "active" : ""}>
-                      {/* 3. Use the dynamic item.href for the Link */}
                       <Link href={item.href}>
                         <item.icon size={20} className="nav-icon" /> 
                         <span>{item.name}</span>
@@ -69,13 +68,17 @@ const Sidebar = () => {
         </nav>
       </div>
       <div className="sidebar-footer">
-        <nav className="sidebar-nav">
+        <nav className="institution-sidebar-nav">
           <ul>
-            <li>
-              <Link href="/logout">
-                <LogOut size={22} className="nav-icon" />
-                <span>Logout</span>
-              </Link>
+            {/* Logout button triggers shared modal */}
+            <li className="logout-item">
+              <button
+                onClick={() => setShowLogoutModal(true)}
+                className="logout-button"
+              >
+                <LogOut size={20} className="nav-icon" />
+                <span className="nav-label">Logout</span>
+              </button>
             </li>
           </ul>
         </nav>

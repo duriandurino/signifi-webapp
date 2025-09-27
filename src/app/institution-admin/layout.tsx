@@ -1,7 +1,7 @@
 "use client";
 
-import React from "react";
-import { usePathname } from "next/navigation";
+import React, { useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
 import Sidebar from "./sidebar";
 import Header from "./header";
 import "./institutionadmin.css";
@@ -11,7 +11,9 @@ export default function InstitutionAdminLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const router = useRouter();
   const pathname = usePathname();
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
 
   // 📝 Map routes -> page titles
   const pageTitles: Record<string, { title: string; subtitle?: string }> = {
@@ -43,11 +45,13 @@ export default function InstitutionAdminLayout({
       title: "Track Learner Progress",
       subtitle: "Monitor student performance, completion rates, and engagement across all courses.",
     },
-
   };
 
   // exclude these pages from showing a header
-  const excludedRoutes = ["/institution-admin/notifications"];
+  const excludedRoutes = [
+    "/institution-admin/notifications",
+    "/institution-admin/institution-profile",
+  ];
 
   const current = pageTitles[pathname] || {
     title: "Welcome, Admin",
@@ -56,14 +60,43 @@ export default function InstitutionAdminLayout({
 
   return (
     <div className="dashboard-layout">
-      <Sidebar />
+      <Sidebar setShowLogoutModal={setShowLogoutModal} />
+
       <div className="main-section">
         {/* Only show Header if NOT excluded */}
         {!excludedRoutes.includes(pathname) && (
-          <Header title={current.title} subtitle={current.subtitle} />
+          <Header title={current.title} subtitle={current.subtitle} setShowLogoutModal={setShowLogoutModal} />
         )}
+
         <main className="main-content">{children}</main>
       </div>
+
+      {/* 🔴 Shared Logout Modal */}
+      {showLogoutModal && (
+        <div className="modal-backdrop">
+          <div className="modal-card">
+            <h2>Confirm Logout</h2>
+            <p>Are you sure you want to log out?</p>
+            <div className="modal-actions">
+              <button
+                className="btn-logoutcancel"
+                onClick={() => setShowLogoutModal(false)}
+              >
+                Cancel
+              </button>
+              <button
+                className="btn-logout"
+                onClick={() => {
+                  setShowLogoutModal(false);
+                  router.replace("/login"); // redirect to login
+                }}
+              >
+                Logout
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

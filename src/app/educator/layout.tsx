@@ -89,16 +89,47 @@ export default function EducatorLayout({ children }: { children: React.ReactNode
 
   return (
     <div className="educator-layout">
-      <Sidebar showLogoutModal={showLogoutModal} setShowLogoutModal={setShowLogoutModal} />
+      <Sidebar setShowLogoutModal={setShowLogoutModal} />
 
       <div className="main-section">
-        {/* Header always visible */}
+        {/* Header always visible except excluded routes */}
         {current && !excludedRoutes.includes(pathname) && (
-          <Header title={current.title} subtitle={current.subtitle} />
+          <Header
+            title={current.title}
+            subtitle={current.subtitle}
+            setShowLogoutModal={setShowLogoutModal}
+          />
         )}
 
         <main className="main-content">{children}</main>
       </div>
+
+      {/* 🔴 Shared Logout Modal */}
+      {showLogoutModal && (
+        <div className="modal-backdrop">
+          <div className="modal-card">
+            <h2>Confirm Logout</h2>
+            <p>Are you sure you want to log out?</p>
+            <div className="modal-actions">
+              <button
+                className="btn-logoutcancel"
+                onClick={() => setShowLogoutModal(false)}
+              >
+                Cancel
+              </button>
+              <button
+                className="btn-logout"
+                onClick={() => {
+                  setShowLogoutModal(false);
+                  router.replace("/login"); // logout redirect
+                }}
+              >
+                Logout
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

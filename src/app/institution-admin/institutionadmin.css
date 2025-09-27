@@ -122,6 +122,47 @@
   margin-top: 1.5rem;
 }
 
+.institution-sidebar-nav li a,
+.logout-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.6rem .5rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: .85rem;
+  font-weight: 300;
+  color: var(--educator-text-light);
+  transition: all 0.2s ease-in-out;
+  border-left: 3px solid transparent;
+}
+
+.educator-sidebar-nav li a:hover,
+.logout-button:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  color: var(--educator-text-light);
+}
+
+.educator-sidebar-nav li.active a {
+  background-color: #293952;
+  color: white;
+}
+
+.nav-icon {
+  color: var(--educator-accent-blue);
+}
+
+.logout-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-weight: 500;
+  color: var(--educator-text-light);
+}
+
+
 /* ---- HEADER ----- */
 .header {
   display: flex;
@@ -270,3 +311,77 @@
 .chevron-icon.open {
   transform: rotate(180deg);
 }
+
+/* --- MODAL --- */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+   z-index: 9999; 
+}
+
+.modal-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  width: 320px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  color: #2d3748;
+}
+
+.modal-card h2{
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+
+}
+
+.modal-card p{
+  font-size: .9rem;
+
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 2rem;
+}
+
+.btn-logoutcancel {
+  background: #e0e2e4;
+  color: #2d3748;
+    font-size: .9rem;
+
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.btn-logout {
+  background: #ef4444;
+  color: white;
+  font-size: .9rem;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.logout-item {
+  margin-bottom: 3rem; 
+  margin-left: 5px;
+}
+

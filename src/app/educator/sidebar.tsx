@@ -1,27 +1,25 @@
 "use client";
 
-import React, { memo, useMemo, useCallback } from "react";
+import React, { memo, useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
-import { LayoutDashboard, BookOpen, Users, BarChart2, User, Settings, LogOut } from "lucide-react";
-import { useAuth } from "@/contexts/AuthContext";
+import { usePathname } from "next/navigation";
+import {
+  LayoutDashboard,
+  BookOpen,
+  Users,
+  BarChart2,
+  User,
+  Settings,
+  LogOut,
+} from "lucide-react";
 
 interface SidebarProps {
-  showLogoutModal: boolean;
   setShowLogoutModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const Sidebar = memo(({ showLogoutModal, setShowLogoutModal }: SidebarProps) => {
+const Sidebar = memo(({ setShowLogoutModal }: SidebarProps) => {
   const pathname = usePathname();
-  const router = useRouter();
-  const { logout } = useAuth();
-
-  const handleLogout = useCallback(() => {
-    logout();
-    router.push("/login");
-    setShowLogoutModal(false);
-  }, [logout, router, setShowLogoutModal]);
 
   const navItems = useMemo(
     () => [
@@ -30,18 +28,25 @@ const Sidebar = memo(({ showLogoutModal, setShowLogoutModal }: SidebarProps) => 
       { href: "/educator/learners", icon: Users, label: "Learners" },
       { href: "/educator/analytics", icon: BarChart2, label: "Analytics" },
       { href: "/educator/profile", icon: User, label: "Profile" },
-      { href: "/educator/settings", icon: Settings, label: "Settings" },
     ],
     []
   );
 
   return (
     <aside className="educator-sidebar">
+      {/* Logo */}
       <div className="sidebar-logo">
-        <Image src="/SigniFi.png" alt="SigniFi Logo" width={30} height={30} priority />
+        <Image
+          src="/SigniFi.png"
+          alt="SigniFi Logo"
+          width={30}
+          height={30}
+          priority
+        />
         <h1>SigniFi</h1>
       </div>
 
+      {/* Navigation */}
       <nav className="educator-sidebar-nav">
         <ul>
           {navItems.map(({ href, icon: Icon, label }) => (
@@ -52,34 +57,19 @@ const Sidebar = memo(({ showLogoutModal, setShowLogoutModal }: SidebarProps) => 
               </Link>
             </li>
           ))}
-          <li>
-            <button onClick={() => setShowLogoutModal(true)} className="logout-button">
+
+          {/* Logout button (triggers shared modal in EducatorLayout) */}
+          <li className="logout-item">
+            <button
+              onClick={() => setShowLogoutModal(true)}
+              className="logout-button"
+            >
               <LogOut size={20} className="nav-icon" />
               <span className="nav-label">Logout</span>
             </button>
           </li>
         </ul>
       </nav>
-
-      {/* Logout modal */}
-      {showLogoutModal && (
-        <div className="modal-backdrop">
-          <div className="modal-card">
-            <div className="modal-header">
-              
-            </div>
-            <p>Are you sure you want to logout?</p>
-            <div className="modal-actions">
-              <button onClick={() => setShowLogoutModal(false)} className="btn-cancel">
-                Cancel
-              </button>
-              <button onClick={handleLogout} className="btn-logout">
-                Logout
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </aside>
   );
 });

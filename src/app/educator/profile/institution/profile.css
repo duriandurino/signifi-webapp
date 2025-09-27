@@ -12,7 +12,11 @@
   --accent-cyan: #22d3ee;
 }
 
-/* Header */
+body {
+  background-color: var(--main-bg);
+}
+
+/* --- Layout --- */
 .main-header {
   display: flex;
   align-items: center;
@@ -20,6 +24,7 @@
   margin-top: 1rem;
   margin-bottom: 1.5rem;
 }
+
 .startheader {
   font-size: 1.2rem;
   display: flex;
@@ -27,20 +32,29 @@
   color: var(--text-primary);
   font-weight: 700;
 }
-/* --- Settings Page Layout --- */
+
 .settings-header {
   border-bottom: 1px solid var(--border-color);
   padding-bottom: 1.5rem;
 }
+
 .settings-layout {
   display: grid;
-  grid-template-columns: 230px 1fr; 
-  gap: .5rem;
-  margin-top: .0rem;
+  grid-template-columns: 230px 1fr;
+  gap: 0.5rem;
+  margin-top: 0;
   align-items: stretch;
 }
 
-/* --- Left Side Navigation Card --- */
+.settings-content {
+  background-color: white;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* --- Navigation --- */
 .settings-nav-card {
   background-color: white;
   padding: 1rem;
@@ -48,11 +62,13 @@
   height: 100%;
   box-shadow: 0 4px 10px rgba(0,0,0,0.03);
 }
+
 .settings-nav-card nav {
   display: flex;
-  gap: .3rem;
+  gap: 0.3rem;
   flex-direction: column;
 }
+
 .settings-nav-link {
   padding: 0.75rem 1rem;
   border-radius: 8px;
@@ -61,157 +77,59 @@
   color: var(--text-primary);
   transition: all 0.2s;
   font-size: 0.9rem;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
 }
+
 .settings-nav-link:hover {
   background-color: #f3f4f6;
   color: var(--text-primary);
 }
+
 .settings-nav-link.active {
   background-color: #eef2ff;
   color: #4f46e5;
 }
+
 .nav-divider {
   height: 1px;
   background-color: var(--border-color);
   margin: 0.5rem 0;
 }
+
 .settings-nav-link.danger {
   color: #ef4444;
 }
+
 .settings-nav-link.danger:hover {
   background-color: #fee2e2;
   color: #b91c1c;
 }
 
-/* --- Right Side Content --- */
-.settings-content {
-  background-color: white;
-  border-radius: 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
+/* --- Info Cards & Sections --- */
 .info-card {
   background-color: white;
   padding: 2rem;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.03);
-}
-
-.card-header-myprofile {
-  display: flex;
-  align-items: center;
-  margin-top: 0px;
-  margin-left: 10px;
-  margin-bottom: 1rem;
-}
-
-.card-header-personalinformation {
-  display: flex;
-  color: var(--text-primary);
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid var(--border-color);
-  margin-top: 10px;
-  padding-bottom: 1rem;
-  margin-bottom: 1rem;
-}
-
-.card-header-settings {
-  display: flex;
-  color: var(--text-primary);
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid var(--border-color);
-  margin-top: 10px;
-  padding-bottom: 1rem;
-  margin-bottom: 1rem;
-}
-
-.card-header-edu {
-  display: flex;
-  color: var(--text-primary);
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid var(--border-color);
-  margin-left: 10px;
-  padding-bottom: 1rem;
-  margin-bottom: 1rem;
-}
-
-.card-header-myprofile h4 { font-size: 1rem; margin: 0; font-weight: 600; color: var(--text-primary);}
-.card-header-personalinformation h4 { font-size: 1rem; margin: 0; font-weight: 600; }
-.card-header-settings h4 { font-size: 1rem; margin: 0; font-weight: 600; }
-.card-header-edu h4 { font-size: 1rem; margin: 0; font-weight: 600; }
-
-.btn-edit-settings {
-  background-color: #f3f4f6;
-  border: 1px solid var(--border-color);
-  color: var(--text-primary);
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  font-weight: 500;
-  font-size: .80rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  cursor: pointer;
-}
-
-/* Specific card bodies */
-.card-body-profile {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-}
-.settings-avatar { border-radius: 50%; }
-.profile-details span { display: block; }
-.profile-name { font-size: 1rem; font-weight: 600; color: var(--text-primary);}
-.profile-title, .profile-location { color: var(--text-primary); font-size: .80rem;}
-
-.card-body-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-}
-.info-item {
-  font-size: 0.9rem;
-  color: var(--text-primary);
-}
-.info-item label {
-  display: block;
-  color: var(--text-muted);
-  margin-bottom: 0.25rem;
-  font-size: 0.8rem;
-}
-.info-item span {
-  font-weight: 500;
-}
-.info-item.full-width {
-  grid-column: 1 / -1; 
-}
-
-.profile-main-card {
-  border: 1px solid #ddd; 
-  border-radius: 12px;    
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px; 
-  background: transparent; 
-  box-shadow: none;       
-}
-
-.info-card {
-  background: white; 
-  border-radius: 12px;
-  padding: 16px;
   border: 1px solid #e5e7eb;
 }
 
 .unified-profile-card {
   padding: 1.5rem;
+}
 
+.profile-main-card {
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: transparent;
+  box-shadow: none;
 }
 
 .card-section {
@@ -220,20 +138,226 @@
 
 .section-divider {
   height: 1px;
-  background-color: #e5e7eb; /* light gray */
+  background-color: #e5e7eb;
   margin: 1.5rem 0;
 }
 
-/*--------- Right Side Content --------------*/
+/* --- Card Headers --- */
+.card-header-myprofile,
+.card-header-personalinformation,
+.card-header-settings,
+.card-header-edu {
+  display: flex;
+  color: var(--text-primary);
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-color);
+  margin-top: 10px;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
 
+.card-header-myprofile {
+  margin-left: 10px;
+  margin-top: 0;
+}
+
+.card-header-edu {
+  margin-left: 10px;
+}
+
+.card-header-myprofile h4,
+.card-header-personalinformation h4,
+.card-header-settings h4,
+.card-header-edu h4 {
+  font-size: 1rem;
+  margin: 0;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* --- Profile Avatar & Details --- */
+.card-body-profile {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.avatar-container {
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.avatar-wrapper {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.settings-avatar {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.btn-edit-avatar {
+  position: absolute;
+  bottom: .5rem;
+  right: .2rem;
+  transform: translate(30%, 30%);
+  background: var(--accent-blue);
+  border: 2px solid white;
+  border-radius: 50%;
+  padding: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.btn-edit-avatar:hover {
+  background: #2563eb;
+  border-color: #f3f4f6;
+}
+
+.profile-details span {
+  display: block;
+}
+
+.profile-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.profile-title,
+.profile-location {
+  color: var(--text-primary);
+  font-size: 0.8rem;
+}
+
+/* --- Grid & Info Items --- */
+.card-body-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.info-item {
+  font-size: 0.9rem;
+  color: var(--text-primary);
+}
+
+.info-item label {
+  display: block;
+  color: var(--text-light); /* Used text-light as text-muted was not defined */
+  margin-bottom: 0.25rem;
+  font-size: 0.8rem;
+}
+
+.info-item span {
+  font-weight: 500;
+}
+
+.info-item.full-width {
+  grid-column: 1 / -1;
+}
+
+/* --- Form Elements (Edit Mode) --- */
+.info-item input,
+.info-item textarea {
+  width: 100%;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--text-primary);
+  background-color: #fff;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+}
+
+.info-item input:focus,
+.info-item textarea:focus {
+  outline: none;
+  border-color: var(--accent-blue);
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+.info-item textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* --- Action Buttons (Edit Mode) --- */
+.btn-edit-settings {
+  background-color: #f3f4f6;
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 500;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.edit-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn-save,
+.btn-cancel {
+  padding: 0.5rem 1.5rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.2s;
+}
+
+.btn-save {
+  background-color: var(--accent-blue);
+  color: white;
+  border-color: var(--accent-green);
+}
+
+.btn-save:hover {
+  background-color: #059669;
+}
+
+.btn-cancel {
+  background-color: #f3f4f6;
+  color: var(--text-primary);
+  border-color: var(--border-color);
+}
+
+.btn-cancel:hover {
+  background-color: #e5e7eb;
+}
+
+/* --- Education & Certifications --- */
 .btn-add-cert {
   background-color: #F0F9FF;
   color: #4f46e5;
-  border: 1px solid #4f46e5 !important;
+  border: 1px solid #4f46e5;
   padding: 0.5rem 1rem;
   border-radius: 6px;
   font-weight: 500;
-  font-size: .75rem;
+  font-size: 0.75rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -306,24 +430,31 @@
   height: 100%;
 }
 
-.account-settings-form input {
-  color: var(--text-primary);   
-  font-weight: 500; 
+/* --- Account Settings Forms --- */
+.account-settings-form h5 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
 }
 
 .account-settings-form {
   display: flex;
   flex-direction: column;
-  gap: 1rem; /* Space between rows */
+  gap: 1rem;
 }
 
 .form-row {
   display: flex;
-  gap: 1.5rem;       /* space between fields */
-  flex-wrap: wrap;    /* allows wrapping on smaller screens */
+  gap: 1.5rem;
+  flex-wrap: wrap;
 }
 
-.form-group { flex: 1;  min-width: 200px;}
+.form-group {
+  flex: 1;
+  min-width: 200px;
+}
+
 .form-group label {
   display: block;
   font-weight: 500;
@@ -331,7 +462,9 @@
   font-size: 0.875rem;
   color: var(--text-primary);
 }
-.form-group input, .form-group select {
+
+.form-group input,
+.form-group select {
   width: 100%;
   padding: 0.75rem;
   border-radius: 8px;
@@ -342,7 +475,6 @@
   color: var(--text-secondary);
 }
 
-/* Make disabled inputs look different */
 .form-group input:disabled {
   background-color: #f9fafb;
   color: var(--text-primary);
@@ -353,7 +485,7 @@
   align-items: center;
   gap: 0.35rem;
   font-size: 0.8rem;
-  color: #16a34a; /* Green for verified */
+  color: #16a34a;
   margin-top: 0.5rem;
 }
 
@@ -362,7 +494,7 @@
   align-items: center;
   border: 1px solid var(--border-color);
   border-radius: 8px;
-  overflow: hidden; /* Important for keeping the rounded corners */
+  overflow: hidden;
 }
 
 .phone-input-group .country-code {
@@ -370,29 +502,22 @@
   background-color: #f3f4f6;
   border-right: 1px solid var(--border-color);
   font-weight: 500;
-  font-size: .9rem;
+  font-size: 0.9rem;
   color: var(--text-primary);
 }
 
 .phone-input-group input {
-  border: none; /* The border is on the parent now */
+  border: none;
   border-radius: 0;
 }
+
 .phone-input-group input:focus {
-    outline: none; /* Remove focus outline from the input itself */
+  outline: none;
 }
 
-/* Add focus style to the parent of the phone input */
 .phone-input-group:focus-within {
-  border-color: var(--primary-blue);
-  box-shadow: 0 0 0 1px var(--primary-blue);
-}
-
-.account-settings-form h5 {
-  font-size: 1rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-  color: var(--text-primary);
+  border-color: var(--accent-blue); /* Using accent-blue, assuming primary-blue was a typo/undefined */
+  box-shadow: 0 0 0 1px var(--accent-blue);
 }
 
 .form-actions {
@@ -402,38 +527,21 @@
   gap: 1rem;
 }
 
-.section-divider {
-  height: 1px;
-  background-color: var(--border-color);
-  margin: 2rem 0;
-}
-
 .btn.btn-primary {
   background-color: #51A2FF;
   color: white;
   padding: 0.5rem 1rem;
   border-radius: 6px;
   font-weight: 500;
-  font-size: .80rem;
+  font-size: 0.8rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  cursor: pointer;}
-
-  .delete-header {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;    
-  color: #ef4444;   /* red for warning */
-  font-weight: 600;
-  font-size: 1rem;
+  cursor: pointer;
 }
 
-.delete-icon {
-  color: #ef4444;   /* red color for the trash icon */
-}
-
-  .delete-account-card {
+/* --- Delete Account Section --- */
+.delete-account-card {
   background-color: white;
   border-radius: 12px;
   padding: 2rem;
@@ -442,6 +550,19 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+}
+
+.delete-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #ef4444;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.delete-icon {
+  color: #ef4444;
 }
 
 .delete-account-card h4 {
@@ -466,12 +587,18 @@
   cursor: pointer;
   width: fit-content;
   transition: all 0.2s;
+  border: none; /* Ensure no default button border */
 }
 
 /* --- Responsive Adjustments --- */
 @media (max-width: 1024px) {
-  .settings-layout { grid-template-columns: 1fr; }
+  .settings-layout {
+    grid-template-columns: 1fr;
+  }
 }
+
 @media (max-width: 768px) {
-  .card-body-grid { grid-template-columns: 1fr; }
+  .card-body-grid {
+    grid-template-columns: 1fr;
+  }
 }
